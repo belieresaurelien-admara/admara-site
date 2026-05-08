@@ -1,0 +1,19 @@
+{
+  "Home": {
+    "tagline": "Premium content. Real places. Curated photographers.",
+    "sub": "One call. One shoot. A month of content."
+  },
+  "LanguageSwitcher": {
+    "label": "Language",
+    "fr": "Français",
+    "en": "English"
+  },
+  "Palette": {
+    "title": "Admara Palette",
+    "olive": "Primary accent — CTAs, links, navigation",
+    "cream": "Dominant background — 50-55% of each view",
+    "sand": "Secondary background — sections, cards, dividers",
+    "brick": "Deep accent — micro-accents, badges, max 5%",
+    "ink": "Primary text — body, signatures, contrasts"
+  }
+}

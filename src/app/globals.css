@@ -1,26 +1,89 @@
 @import "tailwindcss";
 
+/* ----------------------------------------------------------------------------
+ * Admara Studio — Design Tokens
+ * Source of truth: brand-assets/design-tokens.json/tokens.json (v1.1.0)
+ * Tailwind v4 theme — exposes utilities like bg-cream, text-olive, font-serif…
+ * -------------------------------------------------------------------------- */
+
+@theme {
+  /* Colors */
+  --color-olive: #726D2D;
+  --color-cream: #F4EFE6;
+  --color-sand:  #D9CDB6;
+  --color-brick: #8E3A19;
+  --color-ink:   #0A0A0A;
+
+  /* Font families (variables injected by next/font in layout.tsx) */
+  --font-sans:  var(--font-tenor-sans), system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), "Times New Roman", serif;
+
+  /* Type scale (responsive via clamp) */
+  --text-h1: clamp(40px, 5vw, 72px);
+  --text-h1--line-height: 1.1;
+  --text-h2: clamp(32px, 4vw, 44px);
+  --text-h2--line-height: 1.2;
+  --text-h3: clamp(20px, 2.5vw, 26px);
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: 0.02em;
+  --text-body: 16px;
+  --text-body--line-height: 1.6;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-caption: 13px;
+  --text-caption--line-height: 1.4;
+  --text-caption--letter-spacing: 0.05em;
+  --text-price: 20px;
+  --text-price--line-height: 1.2;
+
+  /* Spacing scale (semantic) */
+  --spacing-xs:   4px;
+  --spacing-sm:   8px;
+  --spacing-md:   16px;
+  --spacing-lg:   24px;
+  --spacing-xl:   40px;
+  --spacing-xxl:  64px;
+  --spacing-xxxl: 96px;
+
+  /* Radius */
+  --radius-none: 0px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-soft:   0 2px 8px rgba(10, 10, 10, 0.04);
+  --shadow-medium: 0 8px 24px rgba(10, 10, 10, 0.08);
+  --shadow-deep:   0 16px 48px rgba(10, 10, 10, 0.12);
+
+  /* Breakpoints */
+  --breakpoint-mobile:  640px;
+  --breakpoint-tablet:  768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-wide:    1280px;
+}
+
+/* CSS variables also exposed at :root for direct use (e.g. `var(--color-olive)`) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-olive: #726D2D;
+  --color-cream: #F4EFE6;
+  --color-sand:  #D9CDB6;
+  --color-brick: #8E3A19;
+  --color-ink:   #0A0A0A;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background-color: var(--color-cream);
+  color: var(--color-ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

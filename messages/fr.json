@@ -1,0 +1,19 @@
+{
+  "Home": {
+    "tagline": "Du contenu premium. De vrais lieux. Des photographes curatés.",
+    "sub": "Un appel. Un shoot. Un mois de contenu."
+  },
+  "LanguageSwitcher": {
+    "label": "Langue",
+    "fr": "Français",
+    "en": "English"
+  },
+  "Palette": {
+    "title": "Palette Admara",
+    "olive": "Accent primaire — CTAs, liens, navigation",
+    "cream": "Fond dominant — 50-55% de chaque vue",
+    "sand": "Fond secondaire — sections, cards, dividers",
+    "brick": "Accent profond — micro-accents, badges, max 5%",
+    "ink": "Texte primaire — body, signatures, contrastes"
+  }
+}
