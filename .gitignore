@@ -39,3 +39,16 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+node_modules
+
+# Internal docs (live in admara-internal repo — NEVER push to public)
+BRAND_BOOK_*.md
+PLAN_*.md
+AUDIT_*.md
+SOP_*.md
+PROJECTIONS_*.md
+# Allow phase deliverables (tied to code)
+!PHASE_3_SOURCING_v1.md
+!PHASE_4_LIVRABLE_v1.md
+!INSTALL_PROMPT_*.md
+!SETUP_GUIDE.md
