@@ -41,6 +41,9 @@ yarn-error.log*
 next-env.d.ts
 node_modules
 
+# MCP config with secrets (local-only — use .mcp.json.example as template)
+.mcp.json
+
 # Internal docs (live in admara-internal repo — NEVER push to public)
 BRAND_BOOK_*.md
 PLAN_*.md

@@ -1,0 +1,32 @@
+{
+  "_comment": "Template MCP — copier vers .mcp.json (gitignored) et remplacer les REPLACE_ME_*. shadcn retiré (pas d'endpoint MCP officiel). github via npm package au lieu de Copilot. Tokens injectés en clair dans .mcp.json local (jamais committé).",
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"]
+    },
+    "vercel": {
+      "type": "http",
+      "url": "https://mcp.vercel.com"
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "REPLACE_ME_GH_PAT"
+      }
+    },
+    "supabase": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--read-only",
+        "--project-ref=uxuiqipaqaczjkzkfjnk"
+      ],
+      "env": {
+        "SUPABASE_ACCESS_TOKEN": "REPLACE_ME_SUPABASE_PAT"
+      }
+    }
+  }
+}
