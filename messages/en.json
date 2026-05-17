@@ -1,7 +1,27 @@
 {
   "Home": {
-    "tagline": "Premium content. Real places. Curated photographers.",
-    "sub": "One call. One shoot. A month of content."
+    "tagline": "A nomadic photo and video production studio.",
+    "sub": "Local selection. Art direction. Consistency, city by city.",
+    "cta_creators": "For creators",
+    "cta_brands": "For brands"
+  },
+  "Nav": {
+    "label": "Primary navigation",
+    "creators": "Creators",
+    "brands": "Brands",
+    "pricing": "Pricing",
+    "about": "About"
+  },
+  "Footer": {
+    "tagline": "Photo and video production. Curated photographers in Southeast Asia.",
+    "navLabel": "Site links",
+    "legalLabel": "Legal links",
+    "explore": "Explore",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "imprint": "Imprint"
   },
   "LanguageSwitcher": {
     "label": "Language",

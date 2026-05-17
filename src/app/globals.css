@@ -62,6 +62,19 @@
   --breakpoint-tablet:  768px;
   --breakpoint-desktop: 1024px;
   --breakpoint-wide:    1280px;
+
+  /* Container widths (for max-w-* utilities — Tailwind v4 doesn't ship defaults when @theme is used) */
+  --container-xs:  20rem;  /* 320px */
+  --container-sm:  24rem;  /* 384px */
+  --container-md:  28rem;  /* 448px */
+  --container-lg:  32rem;  /* 512px */
+  --container-xl:  36rem;  /* 576px */
+  --container-2xl: 42rem;  /* 672px */
+  --container-3xl: 48rem;  /* 768px */
+  --container-4xl: 56rem;  /* 896px */
+  --container-5xl: 64rem;  /* 1024px */
+  --container-6xl: 72rem;  /* 1152px */
+  --container-7xl: 80rem;  /* 1280px */
 }
 
 /* CSS variables also exposed at :root for direct use (e.g. `var(--color-olive)`) */

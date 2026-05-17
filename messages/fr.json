@@ -1,7 +1,27 @@
 {
   "Home": {
-    "tagline": "Du contenu premium. De vrais lieux. Des photographes curatés.",
-    "sub": "Un appel. Un shoot. Un mois de contenu."
+    "tagline": "Studio nomade de production photo et vidéo.",
+    "sub": "Sélection locale. Direction artistique. Cohérence ville par ville.",
+    "cta_creators": "Pour les créatrices",
+    "cta_brands": "Pour les marques"
+  },
+  "Nav": {
+    "label": "Navigation principale",
+    "creators": "Créatrices",
+    "brands": "Marques",
+    "pricing": "Tarifs",
+    "about": "À propos"
+  },
+  "Footer": {
+    "tagline": "Production photo et vidéo. Photographes curatés en Asie du Sud-Est.",
+    "navLabel": "Liens du site",
+    "legalLabel": "Liens légaux",
+    "explore": "Explorer",
+    "contact": "Contact",
+    "rights": "Tous droits réservés.",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "imprint": "Mentions légales"
   },
   "LanguageSwitcher": {
     "label": "Langue",
