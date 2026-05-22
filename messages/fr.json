@@ -25,6 +25,102 @@
     "meta": {
       "title": "Le Service — Admara Studio",
       "description": "Le photographe ou vidéaste adapté à ton projet, partout dans le monde. Discovery Call gratuit, ordre de mission et planche moodboard préparés par ADMARA."
+    },
+    "hero": {
+      "eyebrow": "Le Service",
+      "title": "Le photographe ou vidéaste adapté à ton projet.",
+      "sub": "Partout dans le monde. ADMARA prend en charge la recherche, le brief, la coordination et la livraison.",
+      "cta": "Démarrer un projet"
+    },
+    "audiences": {
+      "eyebrow": "Pour qui",
+      "title": "Pour tous les projets visuels.",
+      "intro": "ADMARA accompagne aussi bien une marque qui prépare une campagne qu'une créatrice qui cherche sa série signature ou un particulier qui veut une couverture cadrée d'un moment de vie.",
+      "professional": {
+        "label": "Professionnel",
+        "title": "Marques, agences, indépendants.",
+        "body": "Campagnes, lancements de produits, contenu récurrent. ADMARA cadre l'intention et coordonne l'exécution."
+      },
+      "creative": {
+        "title": "Séries, portfolios, éditoriaux.",
+        "label": "Créatif",
+        "body": "Créatrices et créateurs, marques personnelles, publications. La direction artistique est posée par écrit avant le shoot."
+      },
+      "personal": {
+        "label": "Personnel",
+        "title": "Mariage, événement, portraits structurés.",
+        "body": "Les moments qui méritent une production cadrée. ADMARA construit la mission comme un projet pro, avec un photographe choisi pour son regard."
+      }
+    },
+    "howItWorks": {
+      "eyebrow": "Comment ça marche",
+      "title": "Cinq étapes, aucune zone grise.",
+      "intro": "Le Discovery Call et la rédaction de l'ordre de mission sont gratuits. Aucun paiement n'est demandé avant validation du devis envoyé par Alyssia.",
+      "steps": {
+        "discovery": {
+          "title": "Discovery Call",
+          "body": "Quinze à trente minutes avec Alyssia pour comprendre le projet, l'intention et le contexte."
+        },
+        "mission_order": {
+          "title": "Ordre de mission",
+          "body": "ADMARA rédige le document de cadrage et la planche moodboard. Objectif, livrables, lieu, dates, style."
+        },
+        "submission": {
+          "title": "Sélection du talent",
+          "body": "La mission est soumise au réseau ADMARA. Un photographe ou vidéaste accepte selon ton brief."
+        },
+        "coordination": {
+          "title": "Coordination",
+          "body": "ADMARA pilote logistique, repérages, casting, paiement et briefs jusqu'au jour du shoot."
+        },
+        "delivery": {
+          "title": "Livraison + SAV",
+          "body": "Livraison cadrée selon les délais inscrits au devis. Le service après-vente est intégré."
+        }
+      }
+    },
+    "whyUs": {
+      "eyebrow": "Pourquoi ADMARA",
+      "title": "Une méthode écrite, pas un freelance opportun.",
+      "pillars": {
+        "selection": {
+          "title": "Sélection ouverte",
+          "body": "Réseau mondial recruté un par un sur portfolio et entretien."
+        },
+        "order": {
+          "title": "Ordre de mission cadré",
+          "body": "Document écrit envoyé avant chaque shoot. Aucune ambiguïté."
+        },
+        "moodboard": {
+          "title": "Planche moodboard",
+          "body": "Direction artistique préparée par écrit et en visuel pour le photographe."
+        },
+        "coordination": {
+          "title": "Logistique intégrée",
+          "body": "Repérages, autorisations, casting, paiement, SAV. ADMARA porte la coordination."
+        }
+      }
+    },
+    "cta": {
+      "eyebrow": "Démarrer",
+      "title": "Décris ton projet.",
+      "sub": "Quelques questions courtes pour cadrer ton brief, puis tu réserves ton Discovery Call.",
+      "reassurance": "Discovery Call gratuit. Aucune donnée vendue. RGPD européen."
+    },
+    "agent": {
+      "initial_prompt": "Bonjour. Je suis le concierge digital d'ADMARA. Quelques questions pour cadrer ton projet. Quel type de projet : professionnel, créatif ou personnel ?",
+      "placeholder": "Ta réponse",
+      "input_label": "Réponse au concierge ADMARA",
+      "send": "Envoyer",
+      "sending": "Envoi...",
+      "history": "Voir les {count} précédents",
+      "you": "Toi",
+      "cta_cal": "Réserver mon Discovery Call"
+    },
+    "fallback": {
+      "intro": "Le concierge n'est pas disponible pour l'instant. Tu peux directement réserver un Discovery Call ou écrire à Alyssia.",
+      "cta_cal": "Réserver Cal.com",
+      "cta_email": "Écrire à Alyssia"
     }
   },
   "Admara": {

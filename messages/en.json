@@ -25,6 +25,102 @@
     "meta": {
       "title": "The Service — Admara Studio",
       "description": "The photographer or videographer matched to your project, anywhere in the world. Free Discovery Call, mission order and moodboard prepared by ADMARA."
+    },
+    "hero": {
+      "eyebrow": "The Service",
+      "title": "The photographer or videographer matched to your project.",
+      "sub": "Anywhere in the world. ADMARA handles sourcing, briefing, coordination and delivery.",
+      "cta": "Start a project"
+    },
+    "audiences": {
+      "eyebrow": "Who it's for",
+      "title": "For every visual project.",
+      "intro": "ADMARA serves a brand preparing a campaign as well as a creator looking for a signature series or an individual wanting cadred coverage of a life moment.",
+      "professional": {
+        "label": "Professional",
+        "title": "Brands, agencies, independents.",
+        "body": "Campaigns, product launches, recurring content. ADMARA frames the intent and coordinates execution."
+      },
+      "creative": {
+        "label": "Creative",
+        "title": "Series, portfolios, editorials.",
+        "body": "Creators, personal brands, publications. Art direction is set in writing before the shoot."
+      },
+      "personal": {
+        "label": "Personal",
+        "title": "Weddings, events, structured portraits.",
+        "body": "Moments that deserve a framed production. ADMARA treats every mission like a pro project, with a photographer chosen for their eye."
+      }
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "title": "Five steps, no grey areas.",
+      "intro": "The Discovery Call and mission order writing are free. No payment is requested before the quote sent by Alyssia is signed off.",
+      "steps": {
+        "discovery": {
+          "title": "Discovery Call",
+          "body": "Fifteen to thirty minutes with Alyssia to understand the project, intent and context."
+        },
+        "mission_order": {
+          "title": "Mission order",
+          "body": "ADMARA writes the framing document and the moodboard. Objective, deliverables, location, dates, style."
+        },
+        "submission": {
+          "title": "Talent selection",
+          "body": "The mission is submitted to the ADMARA network. A photographer or videographer accepts based on your brief."
+        },
+        "coordination": {
+          "title": "Coordination",
+          "body": "ADMARA runs logistics, scouting, casting, payment and briefs through to shoot day."
+        },
+        "delivery": {
+          "title": "Delivery + support",
+          "body": "Delivery on the timeline written into the quote. After-sales support is included."
+        }
+      }
+    },
+    "whyUs": {
+      "eyebrow": "Why ADMARA",
+      "title": "A written method, not an opportunistic freelancer.",
+      "pillars": {
+        "selection": {
+          "title": "Open selection",
+          "body": "Worldwide network recruited one by one on portfolio and interview."
+        },
+        "order": {
+          "title": "Framed mission order",
+          "body": "Written document sent before every shoot. No ambiguity."
+        },
+        "moodboard": {
+          "title": "Moodboard",
+          "body": "Art direction prepared in writing and visuals for the photographer."
+        },
+        "coordination": {
+          "title": "Integrated logistics",
+          "body": "Scouting, permits, casting, payment, after-sales. ADMARA carries the coordination."
+        }
+      }
+    },
+    "cta": {
+      "eyebrow": "Get started",
+      "title": "Describe your project.",
+      "sub": "A few short questions to frame your brief, then you book your Discovery Call.",
+      "reassurance": "Free Discovery Call. No data sold. European GDPR."
+    },
+    "agent": {
+      "initial_prompt": "Hello. I'm ADMARA's digital concierge. A few short questions to frame your project. Is your project professional, creative or personal?",
+      "placeholder": "Your answer",
+      "input_label": "Reply to the ADMARA concierge",
+      "send": "Send",
+      "sending": "Sending...",
+      "history": "Show previous ({count})",
+      "you": "You",
+      "cta_cal": "Book my Discovery Call"
+    },
+    "fallback": {
+      "intro": "The concierge isn't available right now. You can book a Discovery Call directly or write to Alyssia.",
+      "cta_cal": "Book on Cal.com",
+      "cta_email": "Write to Alyssia"
     }
   },
   "Admara": {
