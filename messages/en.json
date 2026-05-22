@@ -31,6 +31,63 @@
     "meta": {
       "title": "ADMARA — a studio opening up",
       "description": "ADMARA Studio. A photo and video production studio opening its doors. Two founders, a method, a prototype-assumed posture."
+    },
+    "hero": {
+      "eyebrow": "Studio opening up",
+      "title": "A studio opening up.",
+      "sub": "Two founders. A method. A prototype-assumed posture."
+    },
+    "why": {
+      "eyebrow": "Why ADMARA",
+      "title": "ADMARA exists to make photo and video production legible again.",
+      "p1": "Most visual projects fail at the same spot: a fuzzy brief. The client has an intent, the photographer has a craft, and no one translates one into the other.",
+      "p2": "ADMARA plays that translator role. We collect the project, write a framed mission order, prepare a usable moodboard, and submit the mission to a photographer or videographer curated from our worldwide network.",
+      "p3": "We are starting out. We are two. We build in transparency with our first clients and our first photographers — without claiming a ten-year track record we don't have."
+    },
+    "team": {
+      "eyebrow": "The founders",
+      "title": "Two roles, one standard.",
+      "founders": {
+        "aurelien": {
+          "name": "Aurélien Belières",
+          "role": "Co-founder — Tech and operations",
+          "bio": "Aurélien leads ADMARA's technology and operations: platform, internal tooling, AI agents, automation. He ensures every mission is tracked, delivered and invoiced without friction."
+        },
+        "alyssia": {
+          "name": "Alyssia",
+          "role": "Co-founder — Art direction and client relations",
+          "bio": "Alyssia runs the Discovery Call, writes the mission order and the moodboard, and selects the right photographer or videographer. She is the client's single point of contact end-to-end."
+        }
+      }
+    },
+    "method": {
+      "eyebrow": "The method",
+      "title": "Four pillars, no mystery.",
+      "intro": "ADMARA builds every production on four stable pillars. These pillars are what separates a framed engagement from an improvised shoot.",
+      "pillars": {
+        "selection": {
+          "title": "Open selection",
+          "body": "Worldwide network of photographers and videographers, recruited one by one on portfolio and interview. No automated catalogue."
+        },
+        "order": {
+          "title": "Mission order",
+          "body": "Written document sent before every shoot. Objective, deliverables, location, dates, usage rights: all written down."
+        },
+        "moodboard": {
+          "title": "Moodboard",
+          "body": "Art direction prepared in writing and in visuals. The photographer arrives with the right frame and the right intent."
+        },
+        "coordination": {
+          "title": "Integrated coordination",
+          "body": "Scouting, permits, casting, payment, after-sales. ADMARA carries the logistics so the client can focus on the project."
+        }
+      }
+    },
+    "cta": {
+      "eyebrow": "Get started",
+      "title": "Got a project in mind?",
+      "sub": "Describe it in a few short questions and we'll frame the next steps together.",
+      "button": "Start a project"
     }
   },
   "LanguageSwitcher": {

@@ -31,6 +31,63 @@
     "meta": {
       "title": "ADMARA — un studio en ouverture",
       "description": "ADMARA Studio. Un studio de production photo et vidéo en ouverture. Deux fondateurs, une méthode, une posture de prototype assumée."
+    },
+    "hero": {
+      "eyebrow": "Studio en ouverture",
+      "title": "Un studio en ouverture.",
+      "sub": "Deux fondateurs. Une méthode. Une posture de prototype assumée."
+    },
+    "why": {
+      "eyebrow": "Pourquoi ADMARA",
+      "title": "ADMARA existe pour rendre lisible une production photo et vidéo souvent confuse.",
+      "p1": "La plupart des projets visuels échouent au même endroit : le brief flou. Le client a une intention, le photographe a un savoir-faire, et entre les deux personne ne traduit l'un dans l'autre.",
+      "p2": "ADMARA tient ce rôle de traduction. On collecte le projet, on rédige un ordre de mission cadré, on prépare une planche moodboard exploitable, et on soumet la mission à un photographe ou vidéaste sélectionné dans notre réseau mondial.",
+      "p3": "On démarre. On est deux. On construit en transparence avec nos premiers clients et nos premiers photographes — sans prétendre à dix ans d'expérience qu'on n'a pas."
+    },
+    "team": {
+      "eyebrow": "Les fondateurs",
+      "title": "Deux rôles, une exigence.",
+      "founders": {
+        "aurelien": {
+          "name": "Aurélien Belières",
+          "role": "Co-fondateur — Tech et opérations",
+          "bio": "Aurélien pilote la partie technologique et opérationnelle d'ADMARA : plateforme, outils internes, agents IA, automatisation. Il s'assure que chaque mission est tracée, livrée et facturée sans friction."
+        },
+        "alyssia": {
+          "name": "Alyssia",
+          "role": "Co-fondatrice — Direction artistique et relation client",
+          "bio": "Alyssia tient le Discovery Call, rédige l'ordre de mission et la planche moodboard, sélectionne le photographe ou vidéaste adapté. Elle est l'interlocutrice unique du client de bout en bout."
+        }
+      }
+    },
+    "method": {
+      "eyebrow": "La méthode",
+      "title": "Quatre piliers, aucun mystère.",
+      "intro": "ADMARA construit chaque production sur quatre piliers stables. Ce sont ces piliers qui font la différence entre une prestation cadrée et un shoot improvisé.",
+      "pillars": {
+        "selection": {
+          "title": "Sélection ouverte",
+          "body": "Réseau mondial de photographes et vidéastes, recrutés un par un sur portfolio et entretien. Pas de catalogue automatique."
+        },
+        "order": {
+          "title": "Ordre de mission",
+          "body": "Document écrit envoyé avant chaque shoot. Objectif, livrables, lieu, dates, droits d'usage : tout est posé noir sur blanc."
+        },
+        "moodboard": {
+          "title": "Planche moodboard",
+          "body": "Direction artistique préparée par écrit et en visuel. Le photographe arrive avec le bon cadre et la bonne intention."
+        },
+        "coordination": {
+          "title": "Coordination intégrée",
+          "body": "Repérages, autorisations, casting, paiement, SAV. ADMARA porte la logistique pour que le client se concentre sur son projet."
+        }
+      }
+    },
+    "cta": {
+      "eyebrow": "Démarrer",
+      "title": "Tu as un projet en tête ?",
+      "sub": "Décris-le en quelques questions courtes, on cadre ensemble la suite.",
+      "button": "Démarrer un projet"
     }
   },
   "LanguageSwitcher": {
