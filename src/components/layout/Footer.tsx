@@ -2,10 +2,9 @@ import {getTranslations} from 'next-intl/server';
 import {Link} from '@/i18n/navigation';
 
 const navItems = [
-  {href: '/creators', key: 'creators'},
-  {href: '/brands', key: 'brands'},
-  {href: '/pricing', key: 'pricing'},
-  {href: '/about', key: 'about'}
+  {href: '/', key: 'home'},
+  {href: '/service', key: 'service'},
+  {href: '/admara', key: 'admara'}
 ] as const;
 
 const legalItems = [

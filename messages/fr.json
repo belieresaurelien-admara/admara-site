@@ -1,225 +1,17 @@
 {
   "Home": {
     "tagline": "Studio nomade de production photo et vidéo.",
-    "sub": "Sélection locale. Direction artistique. Cohérence ville par ville.",
-    "cta_creators": "Pour les créatrices",
-    "cta_brands": "Pour les marques"
-  },
-  "Creators": {
-    "meta": {
-      "title": "Créatrices — Admara Studio",
-      "description": "Production photo et vidéo pour créatrices. Studio nomade, talents sélectionnés ville par ville, direction artistique adaptée à ton univers."
-    },
-    "hero": {
-      "eyebrow": "Pour les créatrices",
-      "title": "Production photo et vidéo, à ton univers.",
-      "sub": "Studio nomade. Talents sélectionnés ville par ville. Direction artistique cadrée avant chaque shoot.",
-      "cta_primary": "Réserver un Discovery Call",
-      "cta_secondary": "Voir les tarifs"
-    },
-    "whyUs": {
-      "eyebrow": "Une méthode",
-      "title": "Pas une agence générique. Un studio sélectif.",
-      "intro": "Chaque production ADMARA repose sur une sélection locale, une direction artistique préparée et une coordination cadrée. Aucun maillon n'est laissé au hasard.",
-      "pillars": {
-        "selection": {
-          "title": "Sélection locale",
-          "body": "Photographes et vidéastes sélectionnés ville par ville. Chaque talent est choisi pour son regard, sa cohérence et sa fiabilité."
-        },
-        "direction": {
-          "title": "Direction artistique",
-          "body": "Chaque projet est cadré en amont. Intention, format, univers, rendu : tout est défini avant le shoot."
-        },
-        "delivery": {
-          "title": "Livraison J+14",
-          "body": "Délai inscrit dans le brief. Pas de relance à faire. Tes contenus sont prêts à publier au jour dit."
-        },
-        "nomadic": {
-          "title": "Studio nomade",
-          "body": "ADMARA s'installe pendant plusieurs mois dans une ville pour y construire un réseau créatif. Sessions limitées par saison."
-        }
-      }
-    },
-    "howItWorks": {
-      "eyebrow": "Le déroulé",
-      "title": "Du premier échange à la livraison.",
-      "intro": "Cinq étapes claires. Aucune surprise. Chaque jalon est posé avant le shoot pour que la production avance sans friction.",
-      "steps": {
-        "discovery": {
-          "title": "Discovery Call",
-          "body": "Quinze minutes avec Alyssia pour comprendre ton univers et ton projet."
-        },
-        "matching": {
-          "title": "Sélection du talent",
-          "body": "Alyssia sélectionne un photographe ou vidéaste dont le regard correspond à l'intention."
-        },
-        "booking": {
-          "title": "Devis et règlement",
-          "body": "Validation du devis. Règlement par lien sécurisé. Date confirmée."
-        },
-        "preshoot": {
-          "title": "Pré-shoot",
-          "body": "Check-in trois jours avant la session pour cadrer les derniers détails."
-        },
-        "delivery": {
-          "title": "Livraison",
-          "body": "Production puis livraison sous quatorze jours, contenus prêts à publier."
-        }
-      }
-    },
-    "pricing": {
-      "eyebrow": "Les packs",
-      "title": "Tarifs publics. Pas de surprises post-call.",
-      "intro": "Quatre formats pour quatre intentions. Chaque pack peut être adapté au projet pendant le Discovery Call. Aucun paiement n'est demandé avant validation du devis.",
-      "featured": "Le plus demandé",
-      "cta": "En discuter dans un call",
-      "reassurance": "Les tarifs affichés s'entendent hors frais de déplacement spécifiques. Le détail est précisé pendant le Discovery Call selon la ville en cours.",
-      "packs": {
-        "discover": {
-          "name": "Discover",
-          "body": "Session courte. Un photographe sélectionné. Livraison rapide pour tester ADMARA sur un format simple."
-        },
-        "signature": {
-          "name": "Signature",
-          "body": "Demi-journée de shoot. Direction artistique cadrée. Livraison sous quatorze jours, format photo principal."
-        },
-        "editorial": {
-          "name": "Editorial",
-          "body": "Journée complète. Photo et vidéo coordonnées. Contenu pluri-formats prêt à publier sur tes canaux."
-        },
-        "recurring": {
-          "name": "Recurring",
-          "body": "Une session par mois dans la ville en cours. Cohérence visuelle dans la durée. Idéal pour les créatrices installées."
-        }
-      }
-    },
-    "about": {
-      "eyebrow": "Saison 01",
-      "title": "Un studio en ouverture.",
-      "p1": "ADMARA Studio est une production photo et vidéo nomade. On s'installe pendant plusieurs mois dans une ville pour y construire un réseau de talents locaux et y organiser des sessions sur mesure.",
-      "p2": "On démarre la Saison 01. On construit en transparence avec nos premières créatrices et nos premiers photographes.",
-      "cta": "Voir l'équipe"
-    },
-    "ctaForm": {
-      "eyebrow": "Démarrer",
-      "title": "Parler de ton projet.",
-      "sub": "Quelques questions courtes pour cadrer ton univers, puis tu réserves un créneau avec Alyssia.",
-      "cta_email": "Écrire à Alyssia",
-      "reassurance": "Réponse sous 24 h. Aucune donnée vendue. RGPD européen."
-    }
-  },
-  "Brands": {
-    "meta": {
-      "title": "Marques — Admara Studio",
-      "description": "Production photo et vidéo pour marques. Studio nomade, talents sélectionnés ville par ville, direction artistique au service de votre image."
-    },
-    "hero": {
-      "eyebrow": "Pour les marques",
-      "title": "Production de contenu pour votre marque.",
-      "sub": "Studio nomade. Talents sélectionnés ville par ville. Direction artistique au service de votre image et de votre campagne.",
-      "cta_primary": "Demander un Discovery Call",
-      "cta_secondary": "Voir les packs"
-    },
-    "whyUs": {
-      "eyebrow": "Une méthode",
-      "title": "Pas un prestataire. Un partenaire de production.",
-      "intro": "ADMARA construit chaque production sur une sélection locale, une direction artistique cadrée et une coordination structurée. Vos campagnes avancent sans friction, du brief à la livraison.",
-      "pillars": {
-        "selection": {
-          "title": "Sélection locale",
-          "body": "Réseau de photographes et vidéastes sélectionnés ville par ville. Talents choisis pour leur regard et leur cohérence avec votre univers."
-        },
-        "direction": {
-          "title": "Direction artistique",
-          "body": "Brief cadré avant chaque shoot. Intention, format, ligne visuelle, livrables : tout est défini en amont avec vos équipes."
-        },
-        "delivery": {
-          "title": "Livraison rapide",
-          "body": "Délais inscrits au devis. Production coordonnée. Vos contenus sont livrés prêts à diffuser sur vos canaux."
-        },
-        "nomadic": {
-          "title": "Présence locale",
-          "body": "ADMARA s'installe pendant plusieurs mois dans une métropole pour y déployer un réseau créatif. Sessions ouvertes par saison."
-        }
-      }
-    },
-    "howItWorks": {
-      "eyebrow": "Le déroulé",
-      "title": "Du brief à la livraison.",
-      "intro": "Cinq étapes structurées. Chaque jalon est partagé avec vos équipes pour aligner intention, budget et livrables avant le shoot.",
-      "steps": {
-        "discovery": {
-          "title": "Discovery Call",
-          "body": "Trente minutes avec Alyssia pour comprendre votre marque, vos objectifs et le contexte de la campagne."
-        },
-        "brief": {
-          "title": "Brief créatif",
-          "body": "Direction artistique cadrée par écrit. Talent local sélectionné selon l'intention."
-        },
-        "booking": {
-          "title": "Devis et bon de commande",
-          "body": "Validation du devis. Bon de commande ou règlement selon vos process internes."
-        },
-        "preshoot": {
-          "title": "Pré-shoot",
-          "body": "Check-in une semaine avant la session. Repérages, équipe, livrables finaux confirmés."
-        },
-        "delivery": {
-          "title": "Livraison",
-          "body": "Production puis livraison sous le délai inscrit au devis. Contenus formatés selon vos canaux de diffusion."
-        }
-      }
-    },
-    "pricing": {
-      "eyebrow": "Les packs",
-      "title": "Tarifs publics. Devis détaillé après le call.",
-      "intro": "Quatre formats pour quatre intentions B2B. Chaque pack peut être ajusté au scope réel pendant le Discovery Call. Aucun engagement avant validation écrite du devis.",
-      "featured": "Le plus demandé",
-      "cta": "En discuter dans un call",
-      "reassurance": "Les tarifs affichés s'entendent hors frais de déplacement, droits d'usage étendus et options spécifiques. Le détail est précisé au devis.",
-      "packs": {
-        "discovery": {
-          "name": "Brand Discovery",
-          "body": "Première collaboration. Une session photo, un talent sélectionné, livrables formatés pour vos canaux principaux."
-        },
-        "editorial": {
-          "name": "Brand Editorial",
-          "body": "Production éditoriale complète. Photo et vidéo coordonnées. Direction artistique alignée à votre identité de marque."
-        },
-        "campaign": {
-          "name": "Brand Campaign",
-          "body": "Campagne sur deux à trois jours. Équipe élargie, plusieurs lieux, livrables multi-formats prêts à publier."
-        },
-        "retainer": {
-          "name": "Brand Retainer",
-          "body": "Engagement mensuel. Production récurrente avec un photographe attitré. Cohérence visuelle dans la durée."
-        }
-      }
-    },
-    "about": {
-      "eyebrow": "Saison 01",
-      "title": "Un studio en ouverture.",
-      "p1": "ADMARA Studio est une production photo et vidéo nomade. Nous nous installons pendant plusieurs mois dans une ville pour y construire un réseau de talents locaux sélectionnés.",
-      "p2": "La Saison 01 est l'ouverture des premières sessions. Nous collaborons en transparence avec nos premières marques partenaires.",
-      "cta": "Voir l'équipe"
-    },
-    "ctaForm": {
-      "eyebrow": "Démarrer",
-      "title": "Parler de votre campagne.",
-      "sub": "Quelques questions pour cadrer votre intention et vos contraintes, puis vous réservez un créneau avec Alyssia.",
-      "cta_email": "Écrire à Alyssia",
-      "reassurance": "Réponse sous 24 h. Aucune donnée vendue. RGPD européen."
-    }
+    "sub": "Le photographe ou vidéaste adapté à ton projet, partout dans le monde.",
+    "cta_primary": "Démarrer un projet"
   },
   "Nav": {
     "label": "Navigation principale",
-    "creators": "Créatrices",
-    "brands": "Marques",
-    "pricing": "Tarifs",
-    "about": "À propos"
+    "home": "Accueil",
+    "service": "Le Service",
+    "admara": "ADMARA"
   },
   "Footer": {
-    "tagline": "Production photo et vidéo. Photographes curatés en Asie du Sud-Est.",
+    "tagline": "Studio nomade de production photo et vidéo. Mise en relation, partout dans le monde.",
     "navLabel": "Liens du site",
     "legalLabel": "Liens légaux",
     "explore": "Explorer",
@@ -229,17 +21,21 @@
     "terms": "Conditions",
     "imprint": "Mentions légales"
   },
+  "Service": {
+    "meta": {
+      "title": "Le Service — Admara Studio",
+      "description": "Le photographe ou vidéaste adapté à ton projet, partout dans le monde. Discovery Call gratuit, ordre de mission et planche moodboard préparés par ADMARA."
+    }
+  },
+  "Admara": {
+    "meta": {
+      "title": "ADMARA — un studio en ouverture",
+      "description": "ADMARA Studio. Un studio de production photo et vidéo en ouverture. Deux fondateurs, une méthode, une posture de prototype assumée."
+    }
+  },
   "LanguageSwitcher": {
     "label": "Langue",
     "fr": "Français",
     "en": "English"
-  },
-  "Palette": {
-    "title": "Palette Admara",
-    "olive": "Accent primaire — CTAs, liens, navigation",
-    "cream": "Fond dominant — 50-55% de chaque vue",
-    "sand": "Fond secondaire — sections, cards, dividers",
-    "brick": "Accent profond — micro-accents, badges, max 5%",
-    "ink": "Texte primaire — body, signatures, contrastes"
   }
 }

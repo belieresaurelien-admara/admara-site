@@ -2,7 +2,9 @@ import {getTranslations, setRequestLocale} from 'next-intl/server';
 import {Link} from '@/i18n/navigation';
 import VideoBackground from '@/components/shared/VideoBackground';
 
-export default async function HomePage({params}: PageProps<'/[locale]'>) {
+type Props = {params: Promise<{locale: string}>};
+
+export default async function HomePage({params}: Props) {
   const {locale} = await params;
   setRequestLocale(locale);
 
@@ -24,18 +26,12 @@ export default async function HomePage({params}: PageProps<'/[locale]'>) {
           {t('sub')}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-md mt-md">
+        <div className="mt-md">
           <Link
-            href="/creators"
+            href="/service"
             className="font-sans text-caption uppercase tracking-[0.05em] bg-cream text-ink px-xl py-md hover:bg-olive hover:text-cream transition-colors"
           >
-            {t('cta_creators')}
-          </Link>
-          <Link
-            href="/brands"
-            className="font-sans text-caption uppercase tracking-[0.05em] border border-cream/60 text-cream px-xl py-md hover:bg-cream hover:text-ink transition-colors"
-          >
-            {t('cta_brands')}
+            {t('cta_primary')}
           </Link>
         </div>
       </div>

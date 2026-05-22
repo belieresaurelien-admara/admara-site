@@ -1,225 +1,17 @@
 {
   "Home": {
     "tagline": "A nomadic photo and video production studio.",
-    "sub": "Local selection. Art direction. Consistency, city by city.",
-    "cta_creators": "For creators",
-    "cta_brands": "For brands"
-  },
-  "Creators": {
-    "meta": {
-      "title": "Creators — Admara Studio",
-      "description": "Photo and video production for creators. A nomadic studio with curated local talent and art direction tailored to your world."
-    },
-    "hero": {
-      "eyebrow": "For creators",
-      "title": "Photo and video production, tuned to your world.",
-      "sub": "A nomadic studio. Local talent selected city by city. Art direction set before every shoot.",
-      "cta_primary": "Book a Discovery Call",
-      "cta_secondary": "See pricing"
-    },
-    "whyUs": {
-      "eyebrow": "A method",
-      "title": "Not a generic agency. A selective studio.",
-      "intro": "Each ADMARA production rests on local selection, prepared art direction and structured coordination. Nothing is left to chance.",
-      "pillars": {
-        "selection": {
-          "title": "Local selection",
-          "body": "Photographers and videographers curated city by city. Each talent is chosen for their eye, consistency and reliability."
-        },
-        "direction": {
-          "title": "Art direction",
-          "body": "Every project is framed upstream. Intent, format, world, output: all defined before the shoot."
-        },
-        "delivery": {
-          "title": "Delivered in 14 days",
-          "body": "Timeline written into the brief. No follow-up needed. Your content lands on the agreed date."
-        },
-        "nomadic": {
-          "title": "A nomadic studio",
-          "body": "ADMARA settles in a city for several months to build a creative network. Limited sessions per season."
-        }
-      }
-    },
-    "howItWorks": {
-      "eyebrow": "The flow",
-      "title": "From first call to delivery.",
-      "intro": "Five clear steps. No surprises. Every milestone is set before the shoot so production runs without friction.",
-      "steps": {
-        "discovery": {
-          "title": "Discovery Call",
-          "body": "Fifteen minutes with Alyssia to understand your world and your project."
-        },
-        "matching": {
-          "title": "Talent matching",
-          "body": "Alyssia selects a photographer or videographer whose eye matches the intent."
-        },
-        "booking": {
-          "title": "Quote and payment",
-          "body": "Quote confirmed. Payment via secure link. Date locked."
-        },
-        "preshoot": {
-          "title": "Pre-shoot",
-          "body": "Check-in three days before the session to settle the final details."
-        },
-        "delivery": {
-          "title": "Delivery",
-          "body": "Production then delivery within fourteen days, content ready to publish."
-        }
-      }
-    },
-    "pricing": {
-      "eyebrow": "Packs",
-      "title": "Public pricing. No post-call surprises.",
-      "intro": "Four formats for four intents. Each pack can be tailored during the Discovery Call. No payment is asked before the quote is signed off.",
-      "featured": "Most requested",
-      "cta": "Discuss it in a call",
-      "reassurance": "Listed prices exclude city-specific travel costs. Details are shared during the Discovery Call based on the current city.",
-      "packs": {
-        "discover": {
-          "name": "Discover",
-          "body": "Short session. One selected photographer. Quick delivery to try ADMARA on a simple format."
-        },
-        "signature": {
-          "name": "Signature",
-          "body": "Half-day shoot. Art direction set. Delivered within fourteen days, primary photo format."
-        },
-        "editorial": {
-          "name": "Editorial",
-          "body": "Full day. Coordinated photo and video. Multi-format content ready to publish across channels."
-        },
-        "recurring": {
-          "name": "Recurring",
-          "body": "One session per month in the current city. Visual consistency over time. Ideal for established creators."
-        }
-      }
-    },
-    "about": {
-      "eyebrow": "Season 01",
-      "title": "A studio opening up.",
-      "p1": "ADMARA Studio is a nomadic photo and video production. We settle in a city for several months to build a network of local talent and run tailored sessions.",
-      "p2": "We are starting Season 01. We build in transparency with our first creators and our first photographers.",
-      "cta": "Meet the team"
-    },
-    "ctaForm": {
-      "eyebrow": "Get started",
-      "title": "Talk about your project.",
-      "sub": "A few short questions to frame your world, then you book a slot with Alyssia.",
-      "cta_email": "Write to Alyssia",
-      "reassurance": "Reply within 24 hours. No data sold. European GDPR."
-    }
-  },
-  "Brands": {
-    "meta": {
-      "title": "Brands — Admara Studio",
-      "description": "Photo and video production for brands. A nomadic studio with curated local talent and art direction serving your visual identity."
-    },
-    "hero": {
-      "eyebrow": "For brands",
-      "title": "Production tuned to your brand.",
-      "sub": "A nomadic studio. Local talent selected city by city. Art direction aligned with your visual identity and your campaign.",
-      "cta_primary": "Request a Discovery Call",
-      "cta_secondary": "See packs"
-    },
-    "whyUs": {
-      "eyebrow": "A method",
-      "title": "Not a vendor. A production partner.",
-      "intro": "ADMARA builds each production on local selection, framed art direction and structured coordination. Your campaigns run without friction, from brief to delivery.",
-      "pillars": {
-        "selection": {
-          "title": "Local selection",
-          "body": "A network of photographers and videographers curated city by city. Talent chosen for their eye and their fit with your world."
-        },
-        "direction": {
-          "title": "Art direction",
-          "body": "Brief framed before every shoot. Intent, format, visual line, deliverables: all defined upstream with your team."
-        },
-        "delivery": {
-          "title": "Fast delivery",
-          "body": "Timelines written into the quote. Coordinated production. Content delivered ready to ship on your channels."
-        },
-        "nomadic": {
-          "title": "Local presence",
-          "body": "ADMARA settles in a metropolis for several months to deploy a creative network. Sessions opened by season."
-        }
-      }
-    },
-    "howItWorks": {
-      "eyebrow": "The flow",
-      "title": "From brief to delivery.",
-      "intro": "Five structured steps. Every milestone is shared with your team to align intent, budget and deliverables before the shoot.",
-      "steps": {
-        "discovery": {
-          "title": "Discovery Call",
-          "body": "Thirty minutes with Alyssia to understand your brand, your goals and the campaign context."
-        },
-        "brief": {
-          "title": "Creative brief",
-          "body": "Art direction written. Local talent selected based on intent."
-        },
-        "booking": {
-          "title": "Quote and PO",
-          "body": "Quote signed off. Purchase order or payment aligned with your internal process."
-        },
-        "preshoot": {
-          "title": "Pre-shoot",
-          "body": "Check-in one week before the session. Locations, team and final deliverables confirmed."
-        },
-        "delivery": {
-          "title": "Delivery",
-          "body": "Production then delivery within the quoted timeline. Content formatted for your distribution channels."
-        }
-      }
-    },
-    "pricing": {
-      "eyebrow": "Packs",
-      "title": "Public pricing. Detailed quote after the call.",
-      "intro": "Four formats for four B2B intents. Each pack can be tailored to actual scope during the Discovery Call. No commitment before a signed-off quote.",
-      "featured": "Most requested",
-      "cta": "Discuss it in a call",
-      "reassurance": "Listed prices exclude travel costs, extended usage rights and specific options. Details are confirmed in the quote.",
-      "packs": {
-        "discovery": {
-          "name": "Brand Discovery",
-          "body": "First collaboration. One photo session, one curated talent, deliverables formatted for your main channels."
-        },
-        "editorial": {
-          "name": "Brand Editorial",
-          "body": "Full editorial production. Coordinated photo and video. Art direction aligned with your brand identity."
-        },
-        "campaign": {
-          "name": "Brand Campaign",
-          "body": "Two to three day campaign. Larger crew, multiple locations, multi-format deliverables ready to publish."
-        },
-        "retainer": {
-          "name": "Brand Retainer",
-          "body": "Monthly engagement. Recurring production with a dedicated photographer. Visual consistency over time."
-        }
-      }
-    },
-    "about": {
-      "eyebrow": "Season 01",
-      "title": "A studio opening up.",
-      "p1": "ADMARA Studio is a nomadic photo and video production. We settle in a city for several months to build a network of selected local talent.",
-      "p2": "Season 01 is the opening of our first sessions. We work in transparency with our first brand partners.",
-      "cta": "Meet the team"
-    },
-    "ctaForm": {
-      "eyebrow": "Get started",
-      "title": "Talk about your campaign.",
-      "sub": "A few questions to frame your intent and constraints, then you book a slot with Alyssia.",
-      "cta_email": "Write to Alyssia",
-      "reassurance": "Reply within 24 hours. No data sold. European GDPR."
-    }
+    "sub": "The photographer or videographer matched to your project, anywhere in the world.",
+    "cta_primary": "Start a project"
   },
   "Nav": {
     "label": "Primary navigation",
-    "creators": "Creators",
-    "brands": "Brands",
-    "pricing": "Pricing",
-    "about": "About"
+    "home": "Home",
+    "service": "The Service",
+    "admara": "ADMARA"
   },
   "Footer": {
-    "tagline": "Photo and video production. Curated photographers in Southeast Asia.",
+    "tagline": "A nomadic photo and video production studio. Matchmaking anywhere in the world.",
     "navLabel": "Site links",
     "legalLabel": "Legal links",
     "explore": "Explore",
@@ -229,17 +21,21 @@
     "terms": "Terms",
     "imprint": "Imprint"
   },
+  "Service": {
+    "meta": {
+      "title": "The Service — Admara Studio",
+      "description": "The photographer or videographer matched to your project, anywhere in the world. Free Discovery Call, mission order and moodboard prepared by ADMARA."
+    }
+  },
+  "Admara": {
+    "meta": {
+      "title": "ADMARA — a studio opening up",
+      "description": "ADMARA Studio. A photo and video production studio opening its doors. Two founders, a method, a prototype-assumed posture."
+    }
+  },
   "LanguageSwitcher": {
     "label": "Language",
     "fr": "Français",
     "en": "English"
-  },
-  "Palette": {
-    "title": "Admara Palette",
-    "olive": "Primary accent — CTAs, links, navigation",
-    "cream": "Dominant background — 50-55% of each view",
-    "sand": "Secondary background — sections, cards, dividers",
-    "brick": "Deep accent — micro-accents, badges, max 5%",
-    "ink": "Primary text — body, signatures, contrasts"
   }
 }
