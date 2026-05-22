@@ -68,7 +68,7 @@ export default async function AdmaraPage({params}: Props) {
             {founders.map((key) => (
               <article
                 key={key}
-                className="bg-sand/60 border border-olive/10 p-xl flex flex-col gap-md"
+                className="card-hover bg-sand/60 border border-olive/10 p-xl flex flex-col gap-md"
               >
                 <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
                   {t(`team.founders.${key}.role`)}
@@ -102,7 +102,7 @@ export default async function AdmaraPage({params}: Props) {
             {pillars.map((key, i) => (
               <li
                 key={key}
-                className="bg-cream border border-olive/10 p-lg flex flex-col gap-sm"
+                className="card-hover bg-cream border border-olive/10 p-lg flex flex-col gap-sm"
               >
                 <span className="font-serif text-h3 text-olive leading-none">
                   {String(i + 1).padStart(2, '0')}

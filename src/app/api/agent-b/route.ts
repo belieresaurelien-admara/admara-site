@@ -15,6 +15,8 @@ export async function POST(req: Request) {
     model: anthropic('claude-haiku-4-5-20251001'),
     system: buildSystemPrompt(),
     messages: modelMessages,
+    temperature: 0.4,
+    maxOutputTokens: 150,
     tools: {
       submit_brief: tool({
         description:
@@ -39,5 +41,9 @@ export async function POST(req: Request) {
     }
   });
 
-  return result.toUIMessageStreamResponse();
+  return result.toUIMessageStreamResponse({
+    headers: {
+      'x-accel-buffering': 'no'
+    }
+  });
 }

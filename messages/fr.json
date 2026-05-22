@@ -115,7 +115,8 @@
       "sending": "Envoi...",
       "history": "Voir les {count} précédents",
       "you": "Toi",
-      "cta_cal": "Réserver mon Discovery Call"
+      "cta_cal": "Réserver mon Discovery Call",
+      "confirmation": "Nous avons bien reçu votre demande. Prenez rendez-vous pour être rappelé."
     },
     "fallback": {
       "intro": "Le concierge n'est pas disponible pour l'instant. Tu peux directement réserver un Discovery Call ou écrire à Alyssia.",

@@ -6,6 +6,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import PageTransition from '@/components/layout/PageTransition';
 import '../globals.css';
 
 const tenorSans = Tenor_Sans({
@@ -59,6 +60,7 @@ export default async function LocaleLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <PageTransition />
         </NextIntlClientProvider>
       </body>
     </html>

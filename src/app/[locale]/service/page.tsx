@@ -69,7 +69,7 @@ export default async function ServicePage({params}: Props) {
             {audiences.map((key) => (
               <article
                 key={key}
-                className="bg-cream border border-olive/10 p-lg flex flex-col gap-sm"
+                className="card-hover bg-cream border border-olive/10 p-lg flex flex-col gap-sm"
               >
                 <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
                   {t(`audiences.${key}.label`)}
@@ -131,7 +131,7 @@ export default async function ServicePage({params}: Props) {
             {pillars.map((key) => (
               <article
                 key={key}
-                className="bg-cream border border-olive/10 p-lg flex flex-col gap-sm"
+                className="card-hover bg-cream border border-olive/10 p-lg flex flex-col gap-sm"
               >
                 <h3 className="font-serif text-h3 text-ink">
                   {t(`whyUs.pillars.${key}.title`)}

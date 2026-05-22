@@ -115,7 +115,8 @@
       "sending": "Sending...",
       "history": "Show previous ({count})",
       "you": "You",
-      "cta_cal": "Book my Discovery Call"
+      "cta_cal": "Book my Discovery Call",
+      "confirmation": "We have received your request. Book your call to be contacted."
     },
     "fallback": {
       "intro": "The concierge isn't available right now. You can book a Discovery Call directly or write to Alyssia.",

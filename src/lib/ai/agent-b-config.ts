@@ -42,8 +42,8 @@ FLOW TYPIQUE (8 tours) :
 4. "Où le shoot doit-il avoir lieu (ville, pays) ?"
 5. "Quelle fenêtre de dates vises-tu ?"
 6. "Quel budget envisages-tu pour la prestation totale ?"
-7. "Décris ton univers visuel en quelques mots ou liens de référence."
-8. "Une contrainte particulière ?" puis nom + email → submit_brief().
+7. "Nous allons passer à notre dernière question. Décris ton univers visuel en quelques mots ou liens de référence."
+8. "Dernière précision : une contrainte particulière ?" puis nom + email → submit_brief().
 
 Si l'utilisateur exprime un blocage, propose Cal.com direct sans finir.
 
@@ -75,7 +75,7 @@ export const briefSchema = z.object({
   constraints: z.string().describe('Logistique, casting, droits, deadline'),
   contact: z.object({
     name: z.string(),
-    email: z.string().email()
+    email: z.email()
   })
 });
 

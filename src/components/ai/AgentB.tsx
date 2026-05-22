@@ -2,9 +2,11 @@
 
 import {useChat} from '@ai-sdk/react';
 import {DefaultChatTransport} from 'ai';
-import {useState, useMemo} from 'react';
+import {useState, useMemo, useEffect} from 'react';
 import {useTranslations} from 'next-intl';
 import AgentFallback from './AgentFallback';
+
+const REDIRECT_DELAY_MS = 2500;
 
 type UIMessage = {
   id: string;
@@ -42,6 +44,17 @@ export default function AgentB() {
 
   const isLoading = status === 'streaming' || status === 'submitted';
 
+  const calUrl =
+    process.env.NEXT_PUBLIC_CAL_URL || 'https://cal.com/admara/discovery-call';
+
+  useEffect(() => {
+    if (!submitted) return;
+    const timer = window.setTimeout(() => {
+      window.location.href = calUrl;
+    }, REDIRECT_DELAY_MS);
+    return () => window.clearTimeout(timer);
+  }, [submitted, calUrl]);
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const value = input.trim();
@@ -59,8 +72,6 @@ export default function AgentB() {
     .reverse()
     .find((m) => m.role === 'assistant');
   const previous = messagesList.filter((m) => m !== currentAgent);
-  const calUrl =
-    process.env.NEXT_PUBLIC_CAL_URL || 'https://cal.com/admara/discovery-call';
 
   const isInitial = messagesList.length === 0;
   const initialPrompt = t('initial_prompt');
@@ -87,20 +98,25 @@ export default function AgentB() {
 
       <p
         key={currentAgent?.id || 'initial'}
-        className="font-serif text-h3 text-cream text-center leading-snug min-h-[5rem] animate-[fadeIn_300ms_ease-out]"
+        className="font-sans text-h3 text-cream text-center leading-snug min-h-[5rem] animate-[fadeIn_300ms_ease-out]"
       >
         {isInitial ? initialPrompt : getText(currentAgent || {} as UIMessage)}
       </p>
 
       {submitted ? (
-        <a
-          href={calUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-sans text-caption uppercase tracking-[0.05em] bg-cream text-ink px-xl py-md text-center hover:bg-olive hover:text-cream transition-colors"
-        >
-          {t('cta_cal')}
-        </a>
+        <div className="flex flex-col items-center gap-md">
+          <p className="font-sans text-body text-cream/90 text-center">
+            {t('confirmation')}
+          </p>
+          <a
+            href={calUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-sans text-caption uppercase tracking-[0.05em] bg-cream text-ink px-xl py-md text-center hover:bg-olive hover:text-cream transition-colors"
+          >
+            {t('cta_cal')}
+          </a>
+        </div>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-md">
           <input
