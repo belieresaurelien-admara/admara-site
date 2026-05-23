@@ -26,15 +26,15 @@ export default async function AdmaraPage({params}: Props) {
   return (
     <>
       {/* ⚠️ Fichier attendu : public/images/header-admara1.jpg */}
-      <div className="relative w-full h-[360px] md:h-[720px] overflow-hidden">
+      <div className="relative w-full h-[280px] md:h-[520px] overflow-hidden bg-ink">
         <Image
           src="/images/header-admara1.jpg"
           alt="ADMARA Studio"
           fill
-          className="object-cover object-center"
+          className="object-contain object-center"
           priority
         />
-        <div className="absolute inset-0 bg-ink/45" />
+        <div className="absolute inset-0 bg-ink/25 pointer-events-none" />
         <div className="hidden md:flex absolute inset-0 flex-col items-center justify-center text-center px-lg gap-md">
           <span className="font-sans text-caption uppercase tracking-[0.1em] text-cream/70">
             {t('hero.eyebrow')}
