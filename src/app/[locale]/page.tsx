@@ -11,7 +11,7 @@ export default async function HomePage({params}: Props) {
   const t = await getTranslations('Home');
 
   return (
-    <section className="relative isolate flex items-center justify-center h-[100svh] w-full overflow-hidden md:-mt-[5rem] md:pt-0">
+    <section className="relative isolate flex items-center justify-center w-full overflow-hidden h-[100svh] md:h-[calc(100svh+5rem)] md:-mt-[5rem] md:pt-0">
       <VideoBackground
         desktopSrc="/videos/video-landing-page-desktop.mp4"
         phoneSrc="/videos/video-landing-page-phone.mp4"
