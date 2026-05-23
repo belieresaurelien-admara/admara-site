@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import Image from 'next/image';
 import {setRequestLocale, getTranslations} from 'next-intl/server';
 import {Link} from '@/i18n/navigation';
 
@@ -24,6 +25,18 @@ export default async function AdmaraPage({params}: Props) {
 
   return (
     <>
+      {/* ⚠️ Placer header-admara.jpg dans public/images/ */}
+      <section className="relative w-full h-[50vh] min-h-[320px] overflow-hidden">
+        <Image
+          src="/images/header-admara.jpg"
+          alt="ADMARA Studio"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-ink/25" />
+      </section>
+
       <section className="bg-cream pt-xxxl pb-xxl">
         <div className="w-full max-w-[56rem] mx-auto px-lg flex flex-col items-center text-center gap-lg">
           <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
@@ -104,7 +117,7 @@ export default async function AdmaraPage({params}: Props) {
                 key={key}
                 className="card-hover bg-cream border border-olive/10 p-lg flex flex-col gap-sm"
               >
-                <span className="font-serif text-h3 text-olive leading-none">
+                <span className="font-serif text-h3 text-brick leading-none">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="font-serif text-h3 text-ink mt-sm">

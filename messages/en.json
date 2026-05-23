@@ -1,8 +1,9 @@
 {
   "Home": {
     "tagline": "A nomadic photo and video production studio.",
-    "sub": "The photographer or videographer matched to your project, anywhere in the world.",
-    "cta_primary": "Start a project"
+    "sub": "The right visual talent for your project, anywhere in the world.",
+    "cta_primary": "Start a project",
+    "cta_city": "BANGKOK"
   },
   "Nav": {
     "label": "Primary navigation",
@@ -11,7 +12,7 @@
     "admara": "ADMARA"
   },
   "Footer": {
-    "tagline": "A nomadic photo and video production studio. Matchmaking anywhere in the world.",
+    "tagline": "A nomadic photo and video production studio. Present in major cities around the world.",
     "navLabel": "Site links",
     "legalLabel": "Legal links",
     "explore": "Explore",
@@ -28,14 +29,14 @@
     },
     "hero": {
       "eyebrow": "The Service",
-      "title": "The photographer or videographer matched to your project.",
-      "sub": "Anywhere in the world. ADMARA handles sourcing, briefing, coordination and delivery.",
+      "title": "The right visual talent for your project.",
+      "sub": "ADMARA selects, prepares and coordinates every production, from first conversation to delivery.",
       "cta": "Start a project"
     },
     "audiences": {
       "eyebrow": "Who it's for",
       "title": "For every visual project.",
-      "intro": "ADMARA serves a brand preparing a campaign as well as a creator looking for a signature series or an individual wanting cadred coverage of a life moment.",
+      "intro": "ADMARA serves a brand preparing a campaign, a creator building an editorial series, or an individual seeking framed coverage of a life moment.",
       "professional": {
         "label": "Professional",
         "title": "Brands, agencies, independents.",
@@ -81,11 +82,11 @@
     },
     "whyUs": {
       "eyebrow": "Why ADMARA",
-      "title": "A written method, not an opportunistic freelancer.",
+      "title": "A method. Selected talent.",
       "pillars": {
         "selection": {
           "title": "Open selection",
-          "body": "Worldwide network recruited one by one on portfolio and interview."
+          "body": "Worldwide network of photographers and videographers recruited one by one on portfolio and interview."
         },
         "order": {
           "title": "Framed mission order",
@@ -93,7 +94,7 @@
         },
         "moodboard": {
           "title": "Moodboard",
-          "body": "Art direction prepared in writing and visuals for the photographer."
+          "body": "Art direction prepared in writing and visuals for the selected talent."
         },
         "coordination": {
           "title": "Integrated logistics",
@@ -116,7 +117,14 @@
       "history": "Show previous ({count})",
       "you": "You",
       "cta_cal": "Book my Discovery Call",
-      "confirmation": "We have received your request. Book your call to be contacted."
+      "confirmation": "We have received your project. Book a slot to talk with Alyssia — the Discovery Call is free.",
+      "datePicker": {
+        "start": "From",
+        "end": "To",
+        "start_label": "Start date",
+        "end_label": "End date",
+        "submit": "Confirm dates"
+      }
     },
     "fallback": {
       "intro": "The concierge isn't available right now. You can book a Discovery Call directly or write to Alyssia.",
@@ -136,10 +144,10 @@
     },
     "why": {
       "eyebrow": "Why ADMARA",
-      "title": "ADMARA exists to make photo and video production legible again.",
-      "p1": "Most visual projects fail at the same spot: a fuzzy brief. The client has an intent, the photographer has a craft, and no one translates one into the other.",
-      "p2": "ADMARA plays that translator role. We collect the project, write a framed mission order, prepare a usable moodboard, and submit the mission to a photographer or videographer curated from our worldwide network.",
-      "p3": "We are starting out. We are two. We build in transparency with our first clients and our first photographers — without claiming a ten-year track record we don't have."
+      "title": "ADMARA makes every photo and video production legible.",
+      "p1": "A visual project plays out in the precision of the brief. The client has an intent, the talent has craft — ADMARA builds the clear link between the two.",
+      "p2": "ADMARA plays that translator role. We collect the project, write a framed mission order, prepare a usable moodboard, then submit the mission to a photographer or videographer curated from our worldwide network.",
+      "p3": "We are starting out. We are two. We build in transparency with our first clients and our first talents — without claiming a ten-year track record we don't have."
     },
     "team": {
       "eyebrow": "The founders",
@@ -160,7 +168,7 @@
     "method": {
       "eyebrow": "The method",
       "title": "Four pillars, no mystery.",
-      "intro": "ADMARA builds every production on four stable pillars. These pillars are what separates a framed engagement from an improvised shoot.",
+      "intro": "These four pillars structure every ADMARA production, from brief to delivery.",
       "pillars": {
         "selection": {
           "title": "Open selection",

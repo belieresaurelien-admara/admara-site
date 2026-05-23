@@ -5,8 +5,11 @@ import {DefaultChatTransport} from 'ai';
 import {useState, useMemo, useEffect} from 'react';
 import {useTranslations} from 'next-intl';
 import AgentFallback from './AgentFallback';
+import DateRangePicker from './DateRangePicker';
 
-const REDIRECT_DELAY_MS = 2500;
+const REDIRECT_DELAY_MS = 3500;
+const TOTAL_STEPS = 8;
+const DATE_PATTERN = /\bdate|fenêtre|quand|période|when|dates\b/i;
 
 type UIMessage = {
   id: string;
@@ -50,7 +53,7 @@ export default function AgentB() {
   useEffect(() => {
     if (!submitted) return;
     const timer = window.setTimeout(() => {
-      window.location.href = calUrl;
+      window.open(calUrl, '_blank');
     }, REDIRECT_DELAY_MS);
     return () => window.clearTimeout(timer);
   }, [submitted, calUrl]);
@@ -68,17 +71,51 @@ export default function AgentB() {
   }
 
   const messagesList = messages as UIMessage[];
-  const currentAgent = [...messagesList]
-    .reverse()
-    .find((m) => m.role === 'assistant');
+  const assistantMessages = messagesList.filter((m) => m.role === 'assistant');
+  const currentAgent = assistantMessages[assistantMessages.length - 1];
   const previous = messagesList.filter((m) => m !== currentAgent);
 
   const isInitial = messagesList.length === 0;
   const initialPrompt = t('initial_prompt');
 
+  const step = Math.min(assistantMessages.length, TOTAL_STEPS);
+  const progress = (step / TOTAL_STEPS) * 100;
+
+  const currentAgentText = currentAgent ? getText(currentAgent) : '';
+  const showDatePicker =
+    !submitted && !isInitial && DATE_PATTERN.test(currentAgentText);
+
+  const handleDateSubmit = (text: string) => {
+    sendMessage({text});
+    setInput('');
+  };
+
+  const displayMessage = submitted
+    ? t('confirmation')
+    : isInitial
+      ? initialPrompt
+      : currentAgentText;
+
   return (
     <div className="w-full max-w-[36rem] mx-auto flex flex-col gap-lg">
-      {previous.length > 0 && (
+      {step > 0 && !submitted && (
+        <div className="flex flex-col gap-xs">
+          <div className="w-full h-[2px] bg-cream/15 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-cream transition-all duration-700 ease-out"
+              style={{
+                width: `${progress}%`,
+                boxShadow: '0 0 8px rgba(244, 239, 230, 0.3)'
+              }}
+            />
+          </div>
+          <p className="font-sans text-caption text-cream/40 text-right">
+            {step} / {TOTAL_STEPS}
+          </p>
+        </div>
+      )}
+
+      {previous.length > 0 && !submitted && (
         <details className="text-cream/60 text-xs">
           <summary className="cursor-pointer uppercase tracking-[0.05em] font-sans hover:text-cream">
             {t('history', {count: previous.length})}
@@ -97,26 +134,23 @@ export default function AgentB() {
       )}
 
       <p
-        key={currentAgent?.id || 'initial'}
+        key={submitted ? 'confirm' : currentAgent?.id || 'initial'}
         className="font-sans text-h3 text-cream text-center leading-snug min-h-[5rem] animate-[fadeIn_300ms_ease-out]"
       >
-        {isInitial ? initialPrompt : getText(currentAgent || {} as UIMessage)}
+        {displayMessage}
       </p>
 
       {submitted ? (
-        <div className="flex flex-col items-center gap-md">
-          <p className="font-sans text-body text-cream/90 text-center">
-            {t('confirmation')}
-          </p>
-          <a
-            href={calUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-sans text-caption uppercase tracking-[0.05em] bg-cream text-ink px-xl py-md text-center hover:bg-olive hover:text-cream transition-colors"
-          >
-            {t('cta_cal')}
-          </a>
-        </div>
+        <a
+          href={calUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="self-center font-sans text-caption uppercase tracking-[0.1em] border border-cream/60 text-cream px-xl py-md text-center hover:bg-cream hover:text-ink transition-colors mt-md"
+        >
+          {t('cta_cal')}
+        </a>
+      ) : showDatePicker ? (
+        <DateRangePicker onSubmit={handleDateSubmit} />
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-md">
           <input

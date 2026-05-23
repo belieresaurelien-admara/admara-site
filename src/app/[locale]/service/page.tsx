@@ -1,4 +1,5 @@
 import type {Metadata} from 'next';
+import Image from 'next/image';
 import {setRequestLocale, getTranslations} from 'next-intl/server';
 import {Link} from '@/i18n/navigation';
 import AgentB from '@/components/ai/AgentB';
@@ -32,6 +33,18 @@ export default async function ServicePage({params}: Props) {
 
   return (
     <>
+      {/* ⚠️ Placer header-le-service.jpg dans public/images/ */}
+      <section className="relative w-full h-[50vh] min-h-[320px] overflow-hidden">
+        <Image
+          src="/images/header-le-service.jpg"
+          alt="Le Service ADMARA"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-ink/25" />
+      </section>
+
       <section className="bg-cream pt-xxxl pb-xxl">
         <div className="w-full max-w-[64rem] mx-auto px-lg flex flex-col items-center text-center gap-lg">
           <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
@@ -101,8 +114,11 @@ export default async function ServicePage({params}: Props) {
           </div>
           <ol className="grid gap-md md:grid-cols-5 border-t border-olive/10 pt-lg">
             {steps.map((key, i) => (
-              <li key={key} className="flex flex-col gap-sm pr-md">
-                <span className="font-serif text-h3 text-olive leading-none">
+              <li
+                key={key}
+                className="card-hover flex flex-col gap-sm p-md bg-cream/40 border border-olive/10"
+              >
+                <span className="font-serif text-h3 text-brick leading-none">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="font-sans text-caption uppercase tracking-[0.05em] text-ink mt-sm">
@@ -131,7 +147,7 @@ export default async function ServicePage({params}: Props) {
             {pillars.map((key) => (
               <article
                 key={key}
-                className="card-hover bg-cream border border-olive/10 p-lg flex flex-col gap-sm"
+                className="card-hover bg-cream border border-olive/10 border-l-2 border-l-brick p-lg flex flex-col gap-sm"
               >
                 <h3 className="font-serif text-h3 text-ink">
                   {t(`whyUs.pillars.${key}.title`)}

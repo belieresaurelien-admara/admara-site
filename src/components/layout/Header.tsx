@@ -28,7 +28,7 @@ export default async function Header() {
               key={key}
               href={href}
               scroll={true}
-              className="font-sans text-caption uppercase tracking-[0.05em] text-ink/70 hover:text-olive transition-colors"
+              className="font-sans text-caption uppercase tracking-[0.05em] text-ink/70 hover:text-brick transition-colors"
             >
               {t(key)}
             </Link>
