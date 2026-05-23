@@ -11,11 +11,11 @@ export default async function HomePage({params}: Props) {
   const t = await getTranslations('Home');
 
   return (
-    <section className="relative isolate flex items-center justify-center h-[100svh] -mt-[5rem] pt-[5rem] overflow-hidden">
+    <section className="relative isolate flex items-center justify-center h-[100svh] w-full overflow-hidden md:-mt-[5rem] md:pt-0">
       <VideoBackground
         desktopSrc="/videos/video-landing-page-desktop.mp4"
         phoneSrc="/videos/video-landing-page-phone.mp4"
-        overlayOpacity={35}
+        overlayOpacity={28}
       />
 
       <div className="relative z-10 w-full max-w-[48rem] mx-auto flex flex-col items-center gap-xl px-lg text-center">

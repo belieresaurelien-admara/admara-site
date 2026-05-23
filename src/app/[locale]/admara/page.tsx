@@ -25,6 +25,7 @@ export default async function AdmaraPage({params}: Props) {
 
   return (
     <>
+      {/* ⚠️ Fichier attendu : public/images/header-admara.jpg */}
       <div className="relative w-full h-[280px] md:h-[520px] overflow-hidden">
         <Image
           src="/images/header-admara.jpg"

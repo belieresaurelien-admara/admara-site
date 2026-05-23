@@ -36,7 +36,7 @@ export default function PageTransition() {
       <h2
         className="font-serif m-0"
         style={{
-          color: '#0A0A0A',
+          color: '#8E3A19',
           fontSize: 'clamp(48px, 6vw, 80px)',
           letterSpacing: '0.08em',
           lineHeight: 1,
@@ -49,7 +49,7 @@ export default function PageTransition() {
       <p
         className="font-sans m-0"
         style={{
-          color: '#0A0A0A',
+          color: '#8E3A19',
           fontSize: 'clamp(16px, 2vw, 28px)',
           marginTop: '10px',
           opacity: 0,

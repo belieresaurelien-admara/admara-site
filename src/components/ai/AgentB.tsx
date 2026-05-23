@@ -8,7 +8,7 @@ import AgentFallback from './AgentFallback';
 import DateRangePicker from './DateRangePicker';
 
 const REDIRECT_DELAY_MS = 3500;
-const TOTAL_STEPS = 8;
+const TOTAL_STEPS = 9;
 const DATE_PATTERN = /\bdate|fenêtre|quand|période|when|dates\b/i;
 
 type UIMessage = {
@@ -73,7 +73,6 @@ export default function AgentB() {
 
   const messagesList = messages as UIMessage[];
   const assistantMessages = messagesList.filter((m) => m.role === 'assistant');
-  const userMessages = messagesList.filter((m) => m.role === 'user');
   const currentAgent = assistantMessages[assistantMessages.length - 1];
   const previous = messagesList.filter((m) => m !== currentAgent);
 
@@ -84,8 +83,11 @@ export default function AgentB() {
   const isInitial = messagesList.length === 0;
   const initialPrompt = t('initial_prompt');
 
-  const step = Math.min(userMessages.length, TOTAL_STEPS);
-  const progress = (step / TOTAL_STEPS) * 100;
+  // Progress: assistant messages count = real question count. Cap at
+  // TOTAL_STEPS - 1 while submitted is false so the bar never reaches 100%
+  // before the brief is actually transmitted. submitted === true → 100%.
+  const rawStep = Math.min(assistantMessages.length, TOTAL_STEPS - 1);
+  const progress = submitted ? 100 : (rawStep / TOTAL_STEPS) * 100;
 
   const currentAgentText = currentAgent ? getText(currentAgent) : '';
   const showDatePicker =
@@ -109,20 +111,21 @@ export default function AgentB() {
 
   return (
     <div className="w-full max-w-[36rem] mx-auto flex flex-col gap-lg">
-      {step > 0 && !submitted && (
-        <div className="flex flex-col gap-xs">
-          <div className="w-full h-[2px] bg-cream/15 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-cream transition-all duration-700 ease-out"
-              style={{
-                width: `${progress}%`,
-                boxShadow: '0 0 8px rgba(244, 239, 230, 0.3)'
-              }}
-            />
-          </div>
-          <p className="font-sans text-caption text-cream/40 text-right">
-            {step} / {TOTAL_STEPS}
-          </p>
+      {(rawStep > 0 || submitted) && (
+        <div className="w-full h-[2px] bg-cream/15 rounded-full overflow-hidden">
+          <div
+            className="h-full bg-cream"
+            style={{
+              width: `${progress}%`,
+              boxShadow: submitted
+                ? '0 0 12px rgba(142, 58, 25, 0.5)'
+                : '0 0 8px rgba(244, 239, 230, 0.3)',
+              backgroundColor: submitted ? 'var(--color-brick)' : undefined,
+              transition: submitted
+                ? 'width 1000ms ease, background-color 400ms ease, box-shadow 400ms ease'
+                : 'width 700ms ease-out'
+            }}
+          />
         </div>
       )}
 

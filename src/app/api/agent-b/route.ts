@@ -9,14 +9,21 @@ export async function POST(req: Request) {
   const {messages} = await req.json();
   const origin = new URL(req.url).origin;
 
-  const modelMessages = await convertToModelMessages(messages);
+  // Filter out any system messages from the client — system prompt is passed
+  // separately via the `system` param and must not be duplicated in messages.
+  const safeMessages = (messages as Array<{role: string}>).filter(
+    (m) => m.role !== 'system'
+  );
+  const modelMessages = await convertToModelMessages(
+    safeMessages as Parameters<typeof convertToModelMessages>[0]
+  );
 
   const result = streamText({
     model: anthropic('claude-haiku-4-5-20251001'),
     system: buildSystemPrompt(),
     messages: modelMessages,
     temperature: 0.4,
-    maxOutputTokens: 150,
+    maxOutputTokens: 120,
     tools: {
       submit_brief: tool({
         description:
