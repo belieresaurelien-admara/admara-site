@@ -7,6 +7,7 @@ import {routing} from '@/i18n/routing';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import PageTransition from '@/components/layout/PageTransition';
+import BottomNav from '@/components/layout/BottomNav';
 import '../globals.css';
 
 const tenorSans = Tenor_Sans({
@@ -58,8 +59,9 @@ export default async function LocaleLayout({
       <body className="min-h-full bg-cream text-ink font-sans flex flex-col">
         <NextIntlClientProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 pb-[4rem] md:pb-0">{children}</main>
           <Footer />
+          <BottomNav />
           <PageTransition />
         </NextIntlClientProvider>
       </body>

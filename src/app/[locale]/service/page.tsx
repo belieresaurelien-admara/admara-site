@@ -33,8 +33,8 @@ export default async function ServicePage({params}: Props) {
 
   return (
     <>
-      {/* ⚠️ Placer header-le-service.jpg dans public/images/ */}
-      <section className="relative w-full h-[50vh] min-h-[320px] overflow-hidden">
+      {/* Photo header — desktop full overlay, mobile compact */}
+      <div className="relative w-full h-[280px] md:h-[520px] overflow-hidden">
         <Image
           src="/images/header-le-service.jpg"
           alt="Le Service ADMARA"
@@ -42,33 +42,48 @@ export default async function ServicePage({params}: Props) {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-ink/25" />
-      </section>
-
-      <section className="bg-cream pt-xxxl pb-xxl">
-        <div className="w-full max-w-[64rem] mx-auto px-lg flex flex-col items-center text-center gap-lg">
-          <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+        <div className="absolute inset-0 bg-ink/40" />
+        <div className="hidden md:flex absolute inset-0 flex-col items-center justify-center text-center px-lg gap-md">
+          <span className="font-sans text-caption uppercase tracking-[0.1em] text-cream/70">
             {t('hero.eyebrow')}
           </span>
-          <h1 className="font-serif text-h1 text-ink leading-[1.1] max-w-[52rem]">
+          <h1 className="font-serif text-h1 text-cream leading-[1.1] max-w-[52rem] drop-shadow-sm">
             {t('hero.title')}
           </h1>
-          <p className="font-sans text-body-lg text-ink/75 max-w-[36rem]">
+          <p className="font-sans text-body-lg text-cream/85 max-w-[36rem]">
             {t('hero.sub')}
           </p>
           <Link
             href="#agent"
-            className="font-sans text-caption uppercase tracking-[0.05em] bg-olive text-cream px-xl py-md mt-md hover:bg-ink transition-colors"
+            className="font-sans text-caption uppercase tracking-[0.08em] border border-cream/70 text-cream px-xl py-md mt-sm hover:bg-brick hover:border-brick hover:text-cream transition-colors"
           >
             {t('hero.cta')}
           </Link>
         </div>
+      </div>
+
+      <section className="md:hidden bg-cream pt-xl pb-lg px-lg text-center">
+        <span className="font-sans text-caption uppercase tracking-[0.1em] text-brick">
+          {t('hero.eyebrow')}
+        </span>
+        <h1 className="font-serif text-h1 text-ink leading-[1.1] mt-sm">
+          {t('hero.title')}
+        </h1>
+        <p className="font-sans text-body-lg text-ink/75 mt-md max-w-[32rem] mx-auto">
+          {t('hero.sub')}
+        </p>
+        <Link
+          href="#agent"
+          className="inline-block font-sans text-caption uppercase tracking-[0.08em] bg-brick text-cream px-xl py-md mt-lg hover:bg-ink transition-colors"
+        >
+          {t('hero.cta')}
+        </Link>
       </section>
 
       <section className="bg-sand py-xxl">
         <div className="w-full max-w-[72rem] mx-auto px-lg flex flex-col gap-xl">
           <div className="flex flex-col gap-sm max-w-[48rem]">
-            <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+            <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
               {t('audiences.eyebrow')}
             </span>
             <h2 className="font-serif text-h2 text-ink leading-[1.15]">
@@ -84,7 +99,7 @@ export default async function ServicePage({params}: Props) {
                 key={key}
                 className="card-hover bg-cream border border-olive/10 p-lg flex flex-col gap-sm"
               >
-                <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+                <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
                   {t(`audiences.${key}.label`)}
                 </span>
                 <h3 className="font-serif text-h3 text-ink mt-xs">
@@ -102,7 +117,7 @@ export default async function ServicePage({params}: Props) {
       <section className="bg-cream py-xxl">
         <div className="w-full max-w-[72rem] mx-auto px-lg flex flex-col gap-xl">
           <div className="flex flex-col gap-sm max-w-[48rem]">
-            <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+            <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
               {t('howItWorks.eyebrow')}
             </span>
             <h2 className="font-serif text-h2 text-ink leading-[1.15]">
@@ -136,7 +151,7 @@ export default async function ServicePage({params}: Props) {
       <section className="bg-sand py-xxl">
         <div className="w-full max-w-[72rem] mx-auto px-lg flex flex-col gap-xl">
           <div className="flex flex-col gap-sm max-w-[48rem]">
-            <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+            <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
               {t('whyUs.eyebrow')}
             </span>
             <h2 className="font-serif text-h2 text-ink leading-[1.15]">
@@ -164,7 +179,7 @@ export default async function ServicePage({params}: Props) {
       <section id="agent" className="bg-ink py-xxxl">
         <div className="w-full max-w-[56rem] mx-auto px-lg flex flex-col items-center text-center gap-xl">
           <div className="flex flex-col items-center gap-sm">
-            <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+            <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
               {t('cta.eyebrow')}
             </span>
             <h2 className="font-serif text-h2 text-cream leading-[1.15] max-w-[40rem]">

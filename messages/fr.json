@@ -138,30 +138,30 @@
       "description": "ADMARA Studio. Un studio de production photo et vidéo en ouverture. Deux fondateurs, une méthode, une posture de prototype assumée."
     },
     "hero": {
-      "eyebrow": "Studio en ouverture",
-      "title": "Un studio en ouverture.",
-      "sub": "Deux fondateurs. Une méthode. Une posture de prototype assumée."
+      "eyebrow": "Saison 01 — Bangkok",
+      "title": "Un studio nomade, un réseau local, un regard affûté.",
+      "sub": "ADMARA construit des productions photo et vidéo sur mesure dans chaque ville où il s'installe."
     },
     "why": {
       "eyebrow": "Pourquoi ADMARA",
-      "title": "ADMARA rend lisible chaque production photo et vidéo.",
-      "p1": "Un projet visuel se joue dans la précision du brief. Le client a une intention, le talent a un savoir-faire — ADMARA construit le lien clair entre les deux.",
-      "p2": "ADMARA tient ce rôle de traduction. On collecte le projet, on rédige un ordre de mission cadré, on prépare une planche moodboard exploitable, puis on soumet la mission à un photographe ou vidéaste sélectionné dans notre réseau mondial.",
-      "p3": "On démarre. On est deux. On construit en transparence avec nos premiers clients et nos premiers talents — sans prétendre à dix ans d'expérience qu'on n'a pas."
+      "title": "ADMARA rend chaque production photo et vidéo lisible, de bout en bout.",
+      "p1": "On se déplace. On s'installe dans des villes pour plusieurs mois, on construit un réseau local de talents sélectionnés, et on organise des productions pour des clients partout dans le monde. Ce mouvement est le cœur du projet : être présent localement, connecté globalement.",
+      "p2": "Ce qui nous intéresse, c'est la jonction entre une intention de client et le regard d'un photographe ou vidéaste local. ADMARA cadre cette jonction par écrit — brief, ordre de mission, planche moodboard — pour que le talent arrive avec le bon contexte et produise quelque chose de cohérent avec le projet.",
+      "p3": "On démarre. On est deux. On construit en transparence avec nos premiers clients et nos premiers talents — sans prétention."
     },
     "team": {
       "eyebrow": "Les fondateurs",
       "title": "Deux rôles, une exigence.",
       "founders": {
         "aurelien": {
-          "name": "Aurélien Belières",
-          "role": "Co-fondateur — Tech et opérations",
-          "bio": "Aurélien pilote la partie technologique et opérationnelle d'ADMARA : plateforme, outils internes, agents IA, automatisation. Il s'assure que chaque mission est tracée, livrée et facturée sans friction."
+          "name": "Aurélien",
+          "role": "Co-fondateur — Stratégie digitale et opérations",
+          "bio": "Aurélien a dirigé des projets digitaux et des stratégies marketing pour des marques exigeantes. Expert en agents IA et en automatisation, il a piloté des systèmes digitaux complexes et des logistiques multi-intervenants. Chez ADMARA, il structure les opérations, les outils et le flux de chaque mission."
         },
         "alyssia": {
           "name": "Alyssia",
-          "role": "Co-fondatrice — Direction artistique et relation client",
-          "bio": "Alyssia tient le Discovery Call, rédige l'ordre de mission et la planche moodboard, sélectionne le photographe ou vidéaste adapté. Elle est l'interlocutrice unique du client de bout en bout."
+          "role": "Co-fondatrice — Direction artistique et expérience client",
+          "bio": "Alyssia a travaillé dans l'hospitality internationale, géré des équipes et conduit des projets de design et de création visuelle. Son œil est formé à des environnements où le détail et la cohérence ne se négocient pas. Chez ADMARA, elle tient la relation client, rédige chaque ordre de mission et sélectionne le talent selon le projet."
         }
       }
     },

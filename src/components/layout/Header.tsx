@@ -16,7 +16,7 @@ export default async function Header() {
       <div className="w-full max-w-[80rem] mx-auto flex items-center justify-between px-lg py-md">
         <Link
           href="/"
-          className="font-serif text-h3 text-olive hover:text-ink transition-colors"
+          className="font-serif text-h3 text-brick hover:text-ink transition-colors"
           aria-label="Admara — Home"
         >
           Admara

@@ -25,8 +25,7 @@ export default async function AdmaraPage({params}: Props) {
 
   return (
     <>
-      {/* ⚠️ Placer header-admara.jpg dans public/images/ */}
-      <section className="relative w-full h-[50vh] min-h-[320px] overflow-hidden">
+      <div className="relative w-full h-[280px] md:h-[520px] overflow-hidden">
         <Image
           src="/images/header-admara.jpg"
           alt="ADMARA Studio"
@@ -34,31 +33,41 @@ export default async function AdmaraPage({params}: Props) {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-ink/25" />
-      </section>
-
-      <section className="bg-cream pt-xxxl pb-xxl">
-        <div className="w-full max-w-[56rem] mx-auto px-lg flex flex-col items-center text-center gap-lg">
-          <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+        <div className="absolute inset-0 bg-ink/45" />
+        <div className="hidden md:flex absolute inset-0 flex-col items-center justify-center text-center px-lg gap-md">
+          <span className="font-sans text-caption uppercase tracking-[0.1em] text-cream/70">
             {t('hero.eyebrow')}
           </span>
-          <h1 className="font-serif text-h1 text-ink leading-[1.1] max-w-[48rem]">
+          <h1 className="font-serif text-h1 text-cream leading-[1.1] max-w-[52rem] drop-shadow-sm">
             {t('hero.title')}
           </h1>
-          <p className="font-sans text-body-lg text-ink/75 max-w-[36rem]">
+          <p className="font-sans text-body-lg text-cream/85 max-w-[36rem]">
             {t('hero.sub')}
           </p>
         </div>
+      </div>
+
+      <section className="md:hidden bg-cream pt-xl pb-lg px-lg text-center">
+        <span className="font-sans text-caption uppercase tracking-[0.1em] text-brick">
+          {t('hero.eyebrow')}
+        </span>
+        <h1 className="font-serif text-h1 text-ink leading-[1.1] mt-sm">
+          {t('hero.title')}
+        </h1>
+        <p className="font-sans text-body-lg text-ink/75 mt-md max-w-[32rem] mx-auto">
+          {t('hero.sub')}
+        </p>
       </section>
 
       <section className="bg-sand py-xxl">
         <div className="w-full max-w-[56rem] mx-auto px-lg flex flex-col gap-lg">
-          <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+          <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
             {t('why.eyebrow')}
           </span>
           <h2 className="font-serif text-h2 text-ink leading-[1.15] max-w-[40rem]">
             {t('why.title')}
           </h2>
+          <div className="divider-brick mt-md mb-sm" />
           <div className="flex flex-col gap-md font-sans text-body-lg text-ink/80 max-w-[44rem]">
             <p>{t('why.p1')}</p>
             <p>{t('why.p2')}</p>
@@ -70,12 +79,13 @@ export default async function AdmaraPage({params}: Props) {
       <section className="bg-cream py-xxl">
         <div className="w-full max-w-[72rem] mx-auto px-lg flex flex-col gap-xl">
           <div className="flex flex-col gap-sm">
-            <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+            <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
               {t('team.eyebrow')}
             </span>
             <h2 className="font-serif text-h2 text-ink leading-[1.15] max-w-[40rem]">
               {t('team.title')}
             </h2>
+            <div className="divider-brick mt-md mb-sm" />
           </div>
           <div className="grid gap-lg md:grid-cols-2">
             {founders.map((key) => (
@@ -83,7 +93,7 @@ export default async function AdmaraPage({params}: Props) {
                 key={key}
                 className="card-hover bg-sand/60 border border-olive/10 p-xl flex flex-col gap-md"
               >
-                <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+                <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
                   {t(`team.founders.${key}.role`)}
                 </span>
                 <h3 className="font-serif text-h3 text-ink">
@@ -101,12 +111,13 @@ export default async function AdmaraPage({params}: Props) {
       <section className="bg-sand py-xxl">
         <div className="w-full max-w-[72rem] mx-auto px-lg flex flex-col gap-xl">
           <div className="flex flex-col gap-sm max-w-[48rem]">
-            <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+            <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
               {t('method.eyebrow')}
             </span>
             <h2 className="font-serif text-h2 text-ink leading-[1.15]">
               {t('method.title')}
             </h2>
+            <div className="divider-brick mt-md mb-sm" />
             <p className="font-sans text-body-lg text-ink/75 mt-sm">
               {t('method.intro')}
             </p>
@@ -134,7 +145,7 @@ export default async function AdmaraPage({params}: Props) {
 
       <section className="bg-ink py-xxl">
         <div className="w-full max-w-[48rem] mx-auto px-lg flex flex-col items-center text-center gap-lg">
-          <span className="font-sans text-caption uppercase tracking-[0.05em] text-olive">
+          <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
             {t('cta.eyebrow')}
           </span>
           <h2 className="font-serif text-h2 text-cream leading-[1.15] max-w-[36rem]">

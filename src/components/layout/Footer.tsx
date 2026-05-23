@@ -38,7 +38,7 @@ export default async function Footer() {
             <Link
               key={key}
               href={href}
-              className="font-sans text-body text-ink/80 hover:text-olive transition-colors w-fit"
+              className="font-sans text-body text-ink/80 hover:text-brick transition-colors w-fit"
             >
               {tNav(key)}
             </Link>
@@ -51,7 +51,7 @@ export default async function Footer() {
           </span>
           <a
             href="mailto:alyssia@admara-studio.com"
-            className="font-sans text-body text-ink/80 hover:text-olive transition-colors w-fit"
+            className="font-sans text-body text-ink/80 hover:text-brick transition-colors w-fit"
           >
             alyssia@admara-studio.com
           </a>
@@ -59,7 +59,7 @@ export default async function Footer() {
             href="https://instagram.com/admara.studio"
             target="_blank"
             rel="noopener noreferrer"
-            className="font-sans text-body text-ink/80 hover:text-olive transition-colors w-fit"
+            className="font-sans text-body text-ink/80 hover:text-brick transition-colors w-fit"
           >
             @admara.studio
           </a>
@@ -76,7 +76,7 @@ export default async function Footer() {
               <Link
                 key={key}
                 href={href}
-                className="font-sans text-caption text-ink/60 hover:text-olive transition-colors"
+                className="font-sans text-caption text-ink/60 hover:text-brick transition-colors"
               >
                 {t(key)}
               </Link>
