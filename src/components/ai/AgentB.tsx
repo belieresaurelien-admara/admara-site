@@ -29,6 +29,7 @@ export default function AgentB() {
   const t = useTranslations('Service.agent');
   const [input, setInput] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [datePicked, setDatePicked] = useState(false);
 
   const transport = useMemo(
     () => new DefaultChatTransport({api: '/api/agent-b'}),
@@ -72,20 +73,30 @@ export default function AgentB() {
 
   const messagesList = messages as UIMessage[];
   const assistantMessages = messagesList.filter((m) => m.role === 'assistant');
+  const userMessages = messagesList.filter((m) => m.role === 'user');
   const currentAgent = assistantMessages[assistantMessages.length - 1];
   const previous = messagesList.filter((m) => m !== currentAgent);
+
+  useEffect(() => {
+    setDatePicked(false);
+  }, [currentAgent?.id]);
 
   const isInitial = messagesList.length === 0;
   const initialPrompt = t('initial_prompt');
 
-  const step = Math.min(assistantMessages.length, TOTAL_STEPS);
+  const step = Math.min(userMessages.length, TOTAL_STEPS);
   const progress = (step / TOTAL_STEPS) * 100;
 
   const currentAgentText = currentAgent ? getText(currentAgent) : '';
   const showDatePicker =
-    !submitted && !isInitial && DATE_PATTERN.test(currentAgentText);
+    !submitted &&
+    !isInitial &&
+    !datePicked &&
+    !isLoading &&
+    DATE_PATTERN.test(currentAgentText);
 
   const handleDateSubmit = (text: string) => {
+    setDatePicked(true);
     sendMessage({text});
     setInput('');
   };

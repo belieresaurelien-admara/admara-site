@@ -25,7 +25,7 @@
   "Service": {
     "meta": {
       "title": "The Service — Admara Studio",
-      "description": "The photographer or videographer matched to your project, anywhere in the world. Free Discovery Call, mission order and moodboard prepared by ADMARA."
+      "description": "Talent sourcing and full coordination of photo and video productions, anywhere in the world."
     },
     "hero": {
       "eyebrow": "The Service",
@@ -36,7 +36,7 @@
     "audiences": {
       "eyebrow": "Who it's for",
       "title": "For every visual project.",
-      "intro": "ADMARA serves a brand preparing a campaign, a creator building an editorial series, or an individual seeking framed coverage of a life moment.",
+      "intro": "Three non-exclusive typologies. The project defines the approach, not the other way around.",
       "professional": {
         "label": "Professional",
         "title": "Brands, agencies, independents.",
@@ -50,7 +50,7 @@
       "personal": {
         "label": "Personal",
         "title": "Weddings, events, structured portraits.",
-        "body": "Moments that deserve a framed production. ADMARA treats every mission like a pro project, with a photographer chosen for their eye."
+        "body": "Moments that deserve a framed production. ADMARA treats every mission like a pro project, with a talent chosen for their eye."
       }
     },
     "howItWorks": {
@@ -68,7 +68,7 @@
         },
         "submission": {
           "title": "Talent selection",
-          "body": "The mission is submitted to the ADMARA network. A photographer or videographer accepts based on your brief."
+          "body": "The mission is submitted to the ADMARA network. A talent accepts based on your brief."
         },
         "coordination": {
           "title": "Coordination",
@@ -117,13 +117,15 @@
       "history": "Show previous ({count})",
       "you": "You",
       "cta_cal": "Book my Discovery Call",
-      "confirmation": "We have received your project. Book a slot to talk with Alyssia — the Discovery Call is free.",
+      "confirmation": "We have received your project. Book a slot to talk with Alyssia.",
       "datePicker": {
-        "start": "From",
-        "end": "To",
-        "start_label": "Start date",
-        "end_label": "End date",
-        "submit": "Confirm dates"
+        "submit": "Confirm",
+        "prev_month": "Previous month",
+        "next_month": "Next month",
+        "departure": "Departure",
+        "range_from": "From",
+        "range_to": "to",
+        "hint": "Pick a start date. You can add an end date if you have a precise window."
       }
     },
     "fallback": {
@@ -134,8 +136,8 @@
   },
   "Admara": {
     "meta": {
-      "title": "ADMARA — a studio opening up",
-      "description": "ADMARA Studio. A photo and video production studio opening its doors. Two founders, a method, a prototype-assumed posture."
+      "title": "ADMARA — Season 01",
+      "description": "A nomadic studio, a local network of curated talents, an international eye. Two founders, one method."
     },
     "hero": {
       "eyebrow": "Season 01 — Bangkok",
@@ -145,9 +147,9 @@
     "why": {
       "eyebrow": "Why ADMARA",
       "title": "ADMARA makes every photo and video production legible, end to end.",
-      "p1": "We move. We settle in cities for several months, build a local network of curated talent, and organise productions for clients across the world. That movement is the core of the project: locally present, globally connected.",
-      "p2": "What drives us is the link between a client's intent and the eye of a local photographer or videographer. ADMARA frames that link in writing — brief, mission order, moodboard — so the talent arrives with the right context and delivers something that holds together.",
-      "p3": "We are starting out. We are two. We build in transparency with our first clients and our first talents — without pretension."
+      "p1": "Our network is built profile by profile. Fashion photographers, architecture videographers, portraitists working in natural light. Each talent arrives with their own eye, gear and specialisations. That diversity is what lets us address any kind of project.",
+      "p2": "For every mission, ADMARA matches a specific project with the talent whose eye, equipment and experience serve the client's intent. The matching isn't algorithmic — it's decided after reading the brief, by Alyssia.",
+      "p3": "ADMARA travels to meet talents in person, understand their world and build durable links in every city. That local sourcing, carried out with passion, becomes the foundation for every production that flows through the city afterwards. Without pretension."
     },
     "team": {
       "eyebrow": "The founders",
@@ -180,7 +182,7 @@
         },
         "moodboard": {
           "title": "Moodboard",
-          "body": "Art direction prepared in writing and in visuals. The photographer arrives with the right frame and the right intent."
+          "body": "Art direction prepared in writing and in visuals. The talent arrives with the right frame and the right intent."
         },
         "coordination": {
           "title": "Integrated coordination",
