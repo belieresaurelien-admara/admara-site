@@ -102,6 +102,12 @@
         }
       }
     },
+    "continuity": {
+      "eyebrow": "Commitment",
+      "title": "The relationship does not end with delivery.",
+      "p1": "ADMARA keeps the follow-up wherever your activity moves next. Through a network of local contacts and an organisation carried end-to-end by ADMARA, coordination never falls back on you.",
+      "p2": "Logistics, quality, pace: the same standard on-site and at distance."
+    },
     "cta": {
       "eyebrow": "Get started",
       "title": "Describe your project.",

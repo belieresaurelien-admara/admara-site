@@ -102,6 +102,12 @@
         }
       }
     },
+    "continuity": {
+      "eyebrow": "Engagement",
+      "title": "La relation ne s'arrête pas à la livraison.",
+      "p1": "ADMARA garde le suivi partout où ton activité se déplace ensuite. Grâce à un maillage de référents locaux et à une organisation portée de bout en bout par ADMARA, la coordination ne te revient jamais.",
+      "p2": "Logistique, qualité, rythme : la même exigence sur place et à distance."
+    },
     "cta": {
       "eyebrow": "Démarrer",
       "title": "Décris ton projet.",

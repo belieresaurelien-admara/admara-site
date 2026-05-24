@@ -176,6 +176,22 @@ export default async function ServicePage({params}: Props) {
         </div>
       </section>
 
+      <section className="bg-cream py-xxl">
+        <div className="w-full max-w-[56rem] mx-auto px-lg flex flex-col gap-lg">
+          <span className="font-sans text-caption uppercase tracking-[0.05em] text-brick">
+            {t('continuity.eyebrow')}
+          </span>
+          <h2 className="font-serif text-h2 text-ink leading-[1.15] max-w-[44rem]">
+            {t('continuity.title')}
+          </h2>
+          <div className="divider-brick mt-md mb-sm" />
+          <div className="flex flex-col gap-md font-sans text-body-lg text-ink/80 max-w-[44rem]">
+            <p>{t('continuity.p1')}</p>
+            <p>{t('continuity.p2')}</p>
+          </div>
+        </div>
+      </section>
+
       <section id="agent" className="bg-ink py-xxxl">
         <div className="w-full max-w-[56rem] mx-auto px-lg flex flex-col items-center text-center gap-xl">
           <div className="flex flex-col items-center gap-sm">
