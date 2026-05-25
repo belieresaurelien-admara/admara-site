@@ -124,6 +124,20 @@
       "you": "Toi",
       "cta_cal": "Réserver mon Discovery Call",
       "confirmation": "Nous avons bien reçu votre projet. Prenez rendez-vous pour échanger avec Alyssia.",
+      "budgetDropdown": {
+        "hint": "Choisis une fourchette en {currency}.",
+        "select_aria": "Choisir la fourchette {label}"
+      },
+      "phoneInput": {
+        "country_label": "Indicatif pays",
+        "number_label": "Numéro",
+        "placeholder": "612345678",
+        "select": "Sélectionner un pays",
+        "search": "Rechercher un pays...",
+        "no_match": "Aucun pays trouvé",
+        "submit": "Valider mon numéro",
+        "invalid": "Numéro non valide pour ce pays."
+      },
       "datePicker": {
         "submit": "Confirmer",
         "prev_month": "Mois précédent",

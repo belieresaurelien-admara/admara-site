@@ -124,6 +124,20 @@
       "you": "You",
       "cta_cal": "Book my Discovery Call",
       "confirmation": "We have received your project. Book a slot to talk with Alyssia.",
+      "budgetDropdown": {
+        "hint": "Pick a bracket in {currency}.",
+        "select_aria": "Select bracket {label}"
+      },
+      "phoneInput": {
+        "country_label": "Country code",
+        "number_label": "Number",
+        "placeholder": "612345678",
+        "select": "Select a country",
+        "search": "Search a country...",
+        "no_match": "No country found",
+        "submit": "Confirm number",
+        "invalid": "Invalid number for this country."
+      },
       "datePicker": {
         "submit": "Confirm",
         "prev_month": "Previous month",

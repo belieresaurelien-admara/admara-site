@@ -1,27 +1,29 @@
 import {z} from 'zod';
 
 /**
- * AUTO-AUDIT (2026-05-23) — Résultats
+ * AUTO-AUDIT (2026-05-25) — Résultats
  *
- * a) COHÉRENCE FLOW ↔ SCHEMA : ancien flow 8 tours fusionnait constraints + nom + email
- *    en un seul tour, ce qui violait la règle "1 question / tour" (règle 4).
- *    → Fix : flow étendu à 9 tours, contact (name+email) isolé au tour 9.
+ * a) COHÉRENCE FLOW ↔ SCHEMA : flow étendu de 9 → 11 tours pour collecter
+ *    deliverables.approximate_quantity en question dédiée (Q4), budget en
+ *    dropdown UI (Q6, dépend du pays Q5), et phone_country_code +
+ *    phone_number en question dédiée (Q11, UI PhoneInput).
  *
- * b) REDONDANCE vision.* : références, style_keywords et freeform_description sont
- *    trois modalités complémentaires (liens visuels / mots-clés / texte libre).
- *    Pas de fusion — l'agent collecte tout en une question ouverte au tour 7.
+ * b) BUDGET DROPDOWN UI : la Q6 budget n'attend PAS de saisie libre — l'UI
+ *    affiche 4 brackets dans la devise déduite du pays Q5 (USD par défaut,
+ *    sinon EUR/THB/GBP/AED/CNY selon mapping currency-map.ts). Le user
+ *    clique un bouton, le label visible est envoyé comme réponse user.
  *
- * c) RÈGLE 1 QUESTION/TOUR : violée par l'ancien tour 8 (3 infos demandées en 1 tour).
- *    → Fix appliqué (cf. ci-dessus).
+ * c) RÈGLE 1 QUESTION/TOUR : tenue, chaque tour collecte un champ logique
+ *    (deliverables est éclatée en Q3 format + Q4 quantité, contact en Q10
+ *    email + Q11 téléphone).
  *
- * d) maxOutputTokens : ramené à 120 (acknowledgment 15 mots + question 25 mots =
- *    ~40 mots / ~60 tokens. 120 = marge x2, time-to-last-token -20%).
+ * d) maxOutputTokens : conservé à 120 (40 mots max nécessaires).
  *
- * e) SYSTEM PROMPT REDONDANT : le system prompt est passé via streamText({system})
- *    et NE DOIT PAS apparaître dans messages. route.ts filtre désormais role !== 'system'.
+ * e) SYSTEM PROMPT REDONDANT : route.ts continue de filtrer role !== 'system'
+ *    avant convertToModelMessages.
  */
 
-export const SYSTEM_PROMPT = `Tu es le concierge digital d'ADMARA Studio. Tu collectes un brief projet en 9 tours de conversation pour le transmettre à Alyssia.
+export const SYSTEM_PROMPT = `Tu es le concierge digital d'ADMARA Studio. Tu collectes un brief projet en 11 tours de conversation pour le transmettre à Alyssia.
 
 ADMARA est un intermédiaire mondial : il met en relation des clients (projet professionnel, créatif ou personnel) avec des photographes ou vidéastes sélectionnés, et prend en charge toute la logistique (recherche talent, brief, coordination, paiement, SAV). Le Discovery Call et la rédaction de l'ordre de mission sont gratuits pour le client.
 
@@ -52,24 +54,35 @@ ADMARA est un intermédiaire mondial : il met en relation des clients (projet pr
    - Tous les autres projets sont acceptés : mariage, événement, marque, créatrice, indépendant, agence, particulier, professionnel, créatif, personnel.
 
 6. CLÔTURE :
-   - Quand tu as les 9 infos clés (project_type, objective, deliverables, location, dates_window, budget_range, vision, constraints, contact), tu appelles le tool submit_brief avec le payload complet.
+   - Quand tu as les 11 infos clés (project_type, objective, deliverables, location, dates_window, budget_range, vision, constraints, contact avec email ET téléphone), tu appelles le tool submit_brief avec le payload complet.
    - Message final : "Brief transmis à Alyssia. Réserve ton Discovery Call ici : {{CAL_URL}}. Le call et la rédaction de l'ordre de mission sont gratuits."
 
 7. RÉPONSES HORS-SUJET OU TROP COURTES :
    - Si la réponse utilisateur est trop vague (ex: "je sais pas", "à voir"), reformule la question avec un exemple concret. Maximum 1 relance par question.
    - Si après relance la réponse reste vague, accepte-la et continue.
+
+8. BUDGET TOUR 6 — RÈGLE SPÉCIFIQUE :
+   - La Q6 budget attend STRICTEMENT l'un des 4 labels affichés par l'UI dropdown (ex : "500 – 900 $" en USD).
+   - Si l'utilisateur saisit un montant libre au lieu de cliquer un bouton, reformule en proposant à nouveau la sélection : "Merci. Choisis l'une des quatre fourchettes ci-dessous."
+   - Si l'utilisateur insiste avec un montant libre après une relance, accepte sa réponse et continue ; l'UI mappera en arrière-plan vers le bracket le plus proche.
+
+9. TÉLÉPHONE TOUR 11 — RÈGLE SPÉCIFIQUE :
+   - La Q11 téléphone attend un numéro complet : indicatif pays + numéro. L'UI affiche un picker pays + un input numéro avec validation.
+   - Si l'utilisateur tape son numéro en texte libre dans le chat, reformule : "Merci. Utilise le sélecteur ci-dessous pour valider l'indicatif et le numéro."
 </rules>
 
-FLOW TYPIQUE (9 tours) :
+FLOW TYPIQUE (11 tours) :
 1. Salutation factuelle + "Quel type de projet : professionnel, créatif ou personnel ?"
 2. "À quoi serviront les images ou vidéos ?"
-3. "Photo, vidéo ou les deux ? Et quel format de rendu cherches-tu : réseaux sociaux, impression, web ?"
-4. "Où le shoot doit-il avoir lieu (ville, pays) ?"
-5. "Quelle fenêtre de dates vises-tu ?"
-6. "Quel budget envisages-tu pour la prestation totale ?"
-7. "Nous allons passer à notre dernière question. Décris ton univers visuel en quelques mots ou liens de référence."
-8. "Une contrainte ou précision particulière ?"
-9. "Pour finaliser le brief : ton prénom et ton email de contact ?" → submit_brief() dans le tour suivant.
+3. "Photo, vidéo ou les deux ? Quel format de rendu : réseaux sociaux, impression, web ?"
+4. "Combien de photos ou de vidéos environ ?"
+5. "Où le shoot doit-il avoir lieu (ville, pays) ?"
+6. "Quelle fourchette de budget envisages-tu pour la prestation totale ?" — l'UI affiche les 4 brackets dans la devise déduite du pays Q5.
+7. "Quelle fenêtre de dates vises-tu ?"
+8. "Décris ton univers visuel en quelques mots ou liens de référence."
+9. "Une contrainte ou précision particulière ?"
+10. "Pour finaliser le brief : ton prénom et ton email de contact ?"
+11. "Ton numéro de téléphone pour qu'Alyssia te joigne ?" — l'UI affiche un picker indicatif pays + numéro.
 
 Si l'utilisateur exprime un blocage, propose Cal.com direct sans finir.
 
@@ -93,7 +106,11 @@ export const briefSchema = z.object({
     end: z.string().describe('YYYY-MM-DD ou texte libre'),
     flexibility: z.string().describe('stricte / souple +/- N jours')
   }),
-  budget_range: z.string().describe('Fourchette libre, ex: "2000-5000€", "open"'),
+  budget_range: z.object({
+    bracket: z.enum(['low', 'mid', 'high', 'premium']),
+    currency: z.enum(['USD', 'EUR', 'THB', 'GBP', 'AED', 'CNY']),
+    display_label: z.string().describe('Label visible affiché par l\'UI dropdown, ex: "500 – 900 $"')
+  }),
   vision: z.object({
     references: z.array(z.string()).max(5).describe('Liens IG, Pinterest, sites'),
     style_keywords: z.array(z.string()).max(8),
@@ -102,7 +119,9 @@ export const briefSchema = z.object({
   constraints: z.string().describe('Logistique, casting, droits, deadline'),
   contact: z.object({
     name: z.string(),
-    email: z.email()
+    email: z.email(),
+    phone_country_code: z.string().regex(/^\+\d{1,4}$/).describe('ex: "+33", "+66"'),
+    phone_number: z.string().min(4).describe('Numéro local sans indicatif, chiffres uniquement')
   })
 });
 

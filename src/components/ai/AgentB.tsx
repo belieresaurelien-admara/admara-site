@@ -2,14 +2,25 @@
 
 import {useChat} from '@ai-sdk/react';
 import {DefaultChatTransport} from 'ai';
-import {useState, useMemo, useEffect} from 'react';
+import {useState, useMemo, useEffect, useRef} from 'react';
 import {useTranslations} from 'next-intl';
 import AgentFallback from './AgentFallback';
 import DateRangePicker from './DateRangePicker';
+import BudgetDropdown from './BudgetDropdown';
+import PhoneInput from './PhoneInput';
+import {
+  currencyFromCountry,
+  bracketFromUsdAmount,
+  type Currency,
+  type Bracket
+} from '@/lib/ai/currency-map';
 
 const REDIRECT_DELAY_MS = 3500;
-const TOTAL_STEPS = 9;
+const TOTAL_STEPS = 11;
 const DATE_PATTERN = /\bdate|fenêtre|quand|période|when|dates\b/i;
+const BUDGET_PATTERN = /\bbudget|fourchette|envisages?-?tu|prestation totale|how much|spend\b/i;
+const PHONE_PATTERN = /\bt[éee]l[éee]phone|num[ée]ro\b|phone number|reach you|joindre\b/i;
+const LOCATION_PATTERN = /\bvilles?|pays|location|country|where.*shoot|lieu\b/i;
 
 type UIMessage = {
   id: string;
@@ -25,11 +36,49 @@ function getText(message: UIMessage): string {
     .join('');
 }
 
+/**
+ * Heuristique : extrait un pays plausible depuis une réponse user à Q5.
+ * Le user peut écrire "Paris, France" ou juste "Thaïlande" ou "Bangkok".
+ * On prend le dernier segment après une virgule, sinon la string entière.
+ */
+function extractCountry(raw: string): string {
+  const parts = raw.split(',').map((s) => s.trim()).filter(Boolean);
+  return parts[parts.length - 1] || raw.trim();
+}
+
+/**
+ * Mappe un montant texte libre (ex: "1200 euros", "$ 2000") vers un bracket USD-équivalent.
+ * Conversion approximative : si pas de devise détectée, on suppose USD.
+ */
+function freeAmountToBracket(text: string): Bracket | null {
+  const numMatch = text.replace(/[   ,]/g, '').match(/(\d{2,7})/);
+  if (!numMatch) return null;
+  const value = parseInt(numMatch[1], 10);
+  // Conversion grossière vers USD selon devise détectée
+  let usd = value;
+  if (/€|euros?|eur/i.test(text)) usd = value / 0.92;
+  else if (/฿|baht|thb/i.test(text)) usd = value / 36;
+  else if (/£|pounds?|gbp/i.test(text)) usd = value / 0.79;
+  else if (/aed|dirham/i.test(text)) usd = value / 3.67;
+  else if (/¥|yuan|cny/i.test(text)) usd = value / 7.2;
+  return bracketFromUsdAmount(usd);
+}
+
 export default function AgentB() {
   const t = useTranslations('Service.agent');
   const [input, setInput] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [datePicked, setDatePicked] = useState(false);
+  const [budgetPicked, setBudgetPicked] = useState(false);
+  const [phonePicked, setPhonePicked] = useState(false);
+
+  // Captures structurées pour submit_brief
+  const captureRef = useRef<{
+    country?: string;
+    currency?: Currency;
+    budget?: {bracket: Bracket; currency: Currency; display_label: string};
+    phone?: {phone_country_code: string; phone_number: string; e164: string};
+  }>({});
 
   const transport = useMemo(
     () => new DefaultChatTransport({api: '/api/agent-b'}),
@@ -73,23 +122,38 @@ export default function AgentB() {
 
   const messagesList = messages as UIMessage[];
   const assistantMessages = messagesList.filter((m) => m.role === 'assistant');
+  const userMessages = messagesList.filter((m) => m.role === 'user');
   const currentAgent = assistantMessages[assistantMessages.length - 1];
+  const previousAgent = assistantMessages[assistantMessages.length - 2];
   const previous = messagesList.filter((m) => m !== currentAgent);
 
   useEffect(() => {
     setDatePicked(false);
+    setBudgetPicked(false);
+    setPhonePicked(false);
   }, [currentAgent?.id]);
+
+  // Détecter la réponse Q5 (pays) dans le dernier message user, juste après une
+  // question agent qui parle de lieu.
+  useEffect(() => {
+    if (previousAgent && LOCATION_PATTERN.test(getText(previousAgent))) {
+      const lastUser = userMessages[userMessages.length - 1];
+      if (lastUser) {
+        const country = extractCountry(getText(lastUser));
+        captureRef.current.country = country;
+        captureRef.current.currency = currencyFromCountry(country);
+      }
+    }
+  }, [previousAgent, userMessages]);
 
   const isInitial = messagesList.length === 0;
   const initialPrompt = t('initial_prompt');
 
-  // Progress: assistant messages count = real question count. Cap at
-  // TOTAL_STEPS - 1 while submitted is false so the bar never reaches 100%
-  // before the brief is actually transmitted. submitted === true → 100%.
   const rawStep = Math.min(assistantMessages.length, TOTAL_STEPS - 1);
   const progress = submitted ? 100 : (rawStep / TOTAL_STEPS) * 100;
 
   const currentAgentText = currentAgent ? getText(currentAgent) : '';
+
   const showDatePicker =
     !submitted &&
     !isInitial &&
@@ -97,17 +161,76 @@ export default function AgentB() {
     !isLoading &&
     DATE_PATTERN.test(currentAgentText);
 
+  const showBudgetDropdown =
+    !submitted &&
+    !isInitial &&
+    !budgetPicked &&
+    !isLoading &&
+    BUDGET_PATTERN.test(currentAgentText);
+
+  const showPhoneInput =
+    !submitted &&
+    !isInitial &&
+    !phonePicked &&
+    !isLoading &&
+    PHONE_PATTERN.test(currentAgentText);
+
   const handleDateSubmit = (text: string) => {
     setDatePicked(true);
     sendMessage({text});
     setInput('');
   };
 
+  const handleBudgetSubmit = (sel: {
+    bracket: Bracket;
+    currency: Currency;
+    display_label: string;
+  }) => {
+    captureRef.current.budget = sel;
+    setBudgetPicked(true);
+    sendMessage({text: sel.display_label});
+    setInput('');
+  };
+
+  const handlePhoneSubmit = (p: {
+    phone_country_code: string;
+    phone_number: string;
+    e164: string;
+  }) => {
+    captureRef.current.phone = p;
+    setPhonePicked(true);
+    sendMessage({text: p.e164});
+    setInput('');
+  };
+
+  // Fallback : si user tape un montant libre quand on attend un bracket,
+  // on capture en arrière-plan le bracket le plus proche.
+  useEffect(() => {
+    if (budgetPicked) return;
+    if (!previousAgent || !BUDGET_PATTERN.test(getText(previousAgent))) return;
+    const lastUser = userMessages[userMessages.length - 1];
+    if (!lastUser) return;
+    const text = getText(lastUser);
+    const bracket = freeAmountToBracket(text);
+    if (bracket) {
+      const currency = captureRef.current.currency ?? 'USD';
+      captureRef.current.budget = {
+        bracket,
+        currency,
+        display_label: text.trim()
+      };
+      setBudgetPicked(true);
+    }
+  }, [previousAgent, userMessages, budgetPicked]);
+
   const displayMessage = submitted
     ? t('confirmation')
     : isInitial
       ? initialPrompt
       : currentAgentText;
+
+  const detectedCurrency: Currency = captureRef.current.currency ?? 'USD';
+  const detectedCountry = captureRef.current.country;
 
   return (
     <div className="w-full max-w-[36rem] mx-auto flex flex-col gap-lg">
@@ -165,6 +288,10 @@ export default function AgentB() {
         </a>
       ) : showDatePicker ? (
         <DateRangePicker onSubmit={handleDateSubmit} />
+      ) : showBudgetDropdown ? (
+        <BudgetDropdown currency={detectedCurrency} onSubmit={handleBudgetSubmit} />
+      ) : showPhoneInput ? (
+        <PhoneInput defaultCountryRaw={detectedCountry} onSubmit={handlePhoneSubmit} />
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col gap-md">
           <input
