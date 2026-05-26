@@ -58,5 +58,4 @@ PROJECTIONS_*.md
 !INSTALL_PROMPT_*.md
 !SETUP_GUIDE.md
 
-# Video assets (too large for git — host on Vercel Blob / Cloudflare R2 for prod)
-public/videos/*.mp4
+# Video assets — committed for now (22 MB total), to migrate to Vercel Blob / R2 if traffic grows.
