@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1170" height="2532" viewBox="0 0 1170 2532">
+  <rect width="1170" height="2532" fill="#F4EFE6"/>
+
+  <!-- Top wordmark -->
+  <text x="585" y="380"
+        font-family="'Cormorant Garamond', Georgia, serif"
+        font-size="180" font-weight="400"
+        fill="#726D2D" text-anchor="middle"
+        letter-spacing="2">Admara</text>
+  <text x="585" y="450"
+        font-family="'Tenor Sans', Helvetica, sans-serif"
+        font-size="32" font-weight="400"
+        fill="#0A0A0A" fill-opacity="0.55"
+        text-anchor="middle"
+        letter-spacing="6"
+        text-transform="uppercase">STUDIO NOMADE</text>
+
+  <!-- QR -->
+  <g transform="translate(175, 796) scale(24.848484848484848)" shape-rendering="crispEdges">
+    <path fill="#F4EFE6" d="M0 0h33v33H0z"/><path stroke="#0A0A0A" d="M0 0.5h7m2 0h1m1 0h2m3 0h3m1 0h1m1 0h1m1 0h1m1 0h7M0 1.5h1m5 0h1m3 0h2m1 0h1m2 0h2m2 0h1m1 0h1m1 0h1m1 0h1m5 0h1M0 2.5h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m1 0h4m1 0h2m1 0h1m1 0h3m1 0h1M0 3.5h1m1 0h3m1 0h1m1 0h1m4 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m1 0h3m1 0h1M0 4.5h1m1 0h3m1 0h1m3 0h1m1 0h2m3 0h2m3 0h1m3 0h1m1 0h3m1 0h1M0 5.5h1m5 0h1m3 0h3m1 0h5m1 0h2m1 0h1m2 0h1m5 0h1M0 6.5h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7M10 7.5h6m2 0h1m3 0h1m1 0h1M3 8.5h2m1 0h2m1 0h1m3 0h1m1 0h4m4 0h2m4 0h2M0 9.5h3m1 0h1m2 0h1m3 0h3m4 0h1m3 0h2m1 0h1m1 0h4M0 10.5h2m1 0h4m1 0h1m1 0h1m1 0h1m4 0h3m1 0h1m1 0h1m2 0h2m2 0h3M1 11.5h1m1 0h1m1 0h1m1 0h1m1 0h2m1 0h5m3 0h1m3 0h2m1 0h2m1 0h2M1 12.5h1m2 0h5m4 0h4m1 0h7m1 0h1m2 0h1m1 0h2M2 13.5h3m3 0h1m2 0h1m1 0h1m4 0h4m1 0h2m2 0h1m2 0h2M2 14.5h1m2 0h2m1 0h3m1 0h1m1 0h1m1 0h1m1 0h3m5 0h1m1 0h3M1 15.5h1m1 0h1m3 0h1m7 0h1m1 0h2m5 0h2m3 0h4M2 16.5h2m1 0h2m3 0h1m2 0h1m2 0h3m1 0h1m2 0h1m2 0h4m2 0h1M0 17.5h1m1 0h2m1 0h1m1 0h1m2 0h2m2 0h2m2 0h2m2 0h1m1 0h1m1 0h4m2 0h1M0 18.5h3m2 0h3m1 0h1m1 0h2m2 0h2m2 0h1m2 0h2m1 0h2m1 0h3m1 0h1M1 19.5h1m10 0h1m2 0h1m2 0h1m3 0h3m3 0h3M0 20.5h2m2 0h1m1 0h2m3 0h1m3 0h1m8 0h1m2 0h1m1 0h1m2 0h1M0 21.5h3m1 0h1m3 0h1m1 0h1m2 0h1m1 0h1m1 0h1m2 0h2m1 0h1m1 0h1m1 0h5M0 22.5h1m5 0h1m4 0h3m4 0h6m2 0h1m2 0h4M0 23.5h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m3 0h2m1 0h2m4 0h1m2 0h1m2 0h1M0 24.5h7m3 0h1m3 0h2m1 0h2m1 0h1m1 0h8m2 0h1M8 25.5h3m1 0h2m1 0h3m2 0h2m2 0h1m3 0h4M0 26.5h7m1 0h3m2 0h1m1 0h1m1 0h1m5 0h2m1 0h1m1 0h1m1 0h1M0 27.5h1m5 0h1m2 0h1m1 0h2m1 0h4m1 0h1m1 0h4m3 0h4M0 28.5h1m1 0h3m1 0h1m1 0h2m1 0h7m3 0h9m1 0h1M0 29.5h1m1 0h3m1 0h1m1 0h1m3 0h1m2 0h1m1 0h4m1 0h2m1 0h1m1 0h1m4 0h1M0 30.5h1m1 0h3m1 0h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m6 0h5M0 31.5h1m5 0h1m3 0h1m1 0h1m2 0h1m1 0h2m2 0h1m3 0h2m2 0h4M0 32.5h7m2 0h3m1 0h5m2 0h1m1 0h5m1 0h2"/>
+  </g>
+
+  <!-- Center wordmark mask (covers ~20% of QR, well under error correction H 30% recovery) -->
+  <g>
+    <rect
+      x="410"
+      y="1146"
+      width="350"
+      height="120"
+      rx="12"
+      fill="#F4EFE6"/>
+    <text
+      x="585"
+      y="1230"
+      font-family="'Cormorant Garamond', Georgia, serif"
+      font-size="80"
+      font-weight="500"
+      fill="#0A0A0A"
+      text-anchor="middle"
+      letter-spacing="4">ADMARA</text>
+  </g>
+
+  <!-- Brick divider -->
+  <rect x="545" y="1706" width="80" height="3" fill="#8E3A19"/>
+
+  <!-- Person name -->
+  <text x="585" y="1816"
+        font-family="'Cormorant Garamond', Georgia, serif"
+        font-size="78" font-weight="400"
+        fill="#0A0A0A" text-anchor="middle"
+        letter-spacing="1">Alyssia Mezaache</text>
+  <text x="585" y="1872"
+        font-family="'Tenor Sans', Helvetica, sans-serif"
+        font-size="28" font-weight="400"
+        fill="#8E3A19" text-anchor="middle"
+        letter-spacing="4"
+        text-transform="uppercase">CO-FONDATRICE — DIRECTION ARTISTIQUE</text>
+
+  <!-- URL footer -->
+  <text x="585" y="2412"
+        font-family="'Tenor Sans', Helvetica, sans-serif"
+        font-size="32" font-weight="400"
+        fill="#0A0A0A" fill-opacity="0.55"
+        text-anchor="middle"
+        letter-spacing="4">admara-studio.com/alyssia</text>
+</svg>

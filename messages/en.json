@@ -221,5 +221,22 @@
     "label": "Language",
     "fr": "Français",
     "en": "English"
+  },
+  "Alyssia": {
+    "meta": {
+      "title": "Alyssia Mezaache — ADMARA Studio",
+      "description": "Co-founder of ADMARA Studio. Talent curation and art direction for every production."
+    },
+    "brand": "ADMARA Studio",
+    "tagline": "Nomadic studio. Talent curation and art direction for every production.",
+    "name": "Alyssia Mezaache",
+    "role": "Co-founder — Art direction",
+    "cta_save": "Save to contacts",
+    "cta_line_label": "LINE",
+    "cta_line_value": "@admara-alyssia",
+    "cta_email_label": "Email",
+    "cta_email_value": "alyssia@admara-studio.com",
+    "cta_site_label": "Website",
+    "cta_site_value": "admara-studio.com"
   }
 }
