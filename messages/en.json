@@ -17,6 +17,7 @@
     "legalLabel": "Legal links",
     "explore": "Explore",
     "contact": "Contact",
+    "collaborate": "Collaborate with ADMARA Studio",
     "rights": "All rights reserved.",
     "privacy": "Privacy",
     "terms": "Terms",
@@ -82,23 +83,23 @@
     },
     "whyUs": {
       "eyebrow": "Why ADMARA",
-      "title": "A method. Selected talent.",
+      "title": "What you gain with ADMARA.",
       "pillars": {
-        "selection": {
-          "title": "Open selection",
-          "body": "Worldwide network of photographers and videographers recruited one by one on portfolio and interview."
+        "qualite": {
+          "title": "Quality",
+          "body": "Every mission is served by a talent whose portfolio and track record have already been vetted. No profile parachuted in, no promise without proof. The quality of the output rests on the rigour of the selection — that's what makes the difference between a shoot that gets delivered and content you can actually use."
         },
-        "order": {
-          "title": "Framed mission order",
-          "body": "Written document sent before every shoot. No ambiguity."
+        "temps": {
+          "title": "Time",
+          "body": "Finding the right photographer, turning an idea into a brief, coordinating each step: those hours are off your plate. ADMARA prepares the production upstream — selection, framing, moodboard, logistics — so you stay on your project, not on its management."
         },
-        "moodboard": {
-          "title": "Moodboard",
-          "body": "Art direction prepared in writing and visuals for the selected talent."
+        "suivi": {
+          "title": "Follow-up",
+          "body": "An ADMARA project doesn't stop at file delivery. Feedback, adjustments, next sessions, recommendations — we build a relationship of trust that goes beyond the mission. The season ends, the relationship stays."
         },
-        "coordination": {
-          "title": "Integrated logistics",
-          "body": "Scouting, permits, casting, payment, after-sales. ADMARA carries the coordination."
+        "securite": {
+          "title": "Security",
+          "body": "Secured payments, briefs validated in advance, scouting done ahead, logistics framed. Every step is written down, never left to improvisation."
         }
       }
     },
@@ -157,7 +158,7 @@
   "Admara": {
     "meta": {
       "title": "ADMARA — Season 01",
-      "description": "A nomadic studio, a local network of curated talents, an international eye. Two founders, one method."
+      "description": "A nomadic studio, a local network of selected talents, an international eye. Two founders, one method."
     },
     "hero": {
       "eyebrow": "Season 01 — Bangkok",
@@ -167,9 +168,12 @@
     "why": {
       "eyebrow": "Why ADMARA",
       "title": "ADMARA makes every photo and video production legible, end to end.",
-      "p1": "Our network is built profile by profile. Fashion photographers, architecture videographers, portraitists working in natural light. Each talent arrives with their own eye, gear and specialisations. That diversity is what lets us address any kind of project.",
-      "p2": "For every mission, ADMARA matches a specific project with the talent whose eye, equipment and experience serve the client's intent. The matching isn't algorithmic — it's decided after reading the brief, by Alyssia.",
-      "p3": "ADMARA travels to meet talents in person, understand their world and build durable links in every city. That local sourcing, carried out with passion, becomes the foundation for every production that flows through the city afterwards. Without pretension."
+      "p1": "Our network is built profile by profile. Fashion photographers, architecture videographers, portraitists working in natural light. Each talent arrives with their own eye, their own gear, their own specialisations. That diversity lets us address very different kinds of projects.",
+      "p2": "This network expands internationally, city by city. Every new opening widens the selection and lets us match the right talents with the most ambitious projects, wherever they go. This mesh is what makes the ADMARA offer distinct: one studio, several cities, one standard.",
+      "p3": "For every mission, ADMARA matches a specific project with the talent whose eye, equipment and experience serve the client's intent. The matching isn't algorithmic — it's decided after reading the brief, by our teams.",
+      "p4": "ADMARA travels to meet talents in person, understand their world and build durable links in every city. This local sourcing becomes the foundation for every production that runs through the city afterwards.",
+      "p5": "When ADMARA leaves a city, the work doesn't stop. A local contact is trained beforehand on the studio's method, standards and art direction. The presence stays, the follow-up stays, the level stays.",
+      "p6": "Every country has its own codes, its own trends, its own ways of telling an image. ADMARA keeps a sharp eye on these shifts. Talents bring ground-level experience. We bring the trend reading and the innovation that shape tomorrow's productions."
     },
     "team": {
       "eyebrow": "The founders",
@@ -189,24 +193,20 @@
     },
     "method": {
       "eyebrow": "The method",
-      "title": "Four pillars, no mystery.",
-      "intro": "These four pillars structure every ADMARA production, from brief to delivery.",
+      "title": "Three pillars, no mystery.",
+      "intro": "Three pillars structure every ADMARA production: the talent, the city, the project.",
       "pillars": {
-        "selection": {
-          "title": "Open selection",
-          "body": "Worldwide network of photographers and videographers, recruited one by one on portfolio and interview. No automated catalogue."
+        "talent": {
+          "title": "The talent",
+          "body": "Every photographer and videographer is recruited one by one, on portfolio and interview. No automated catalogue, no profile added to pad the numbers. Once selected, the talent keeps their eye, their style and their voice — that's why they were chosen. ADMARA brings the framing, the brief and the art direction. The eye stays the artist's."
         },
-        "order": {
-          "title": "Mission order",
-          "body": "Written document sent before every shoot. Objective, deliverables, location, dates, usage rights: all written down."
+        "ville": {
+          "title": "The city",
+          "body": "Every city is chosen on precise criteria: a hub of entrepreneurs and talents, an active creative scene, a remarkable setting, the option to return season after season. ADMARA settles where a momentum already exists, and where a lasting presence makes sense."
         },
-        "moodboard": {
-          "title": "Moodboard",
-          "body": "Art direction prepared in writing and in visuals. The talent arrives with the right frame and the right intent."
-        },
-        "coordination": {
-          "title": "Integrated coordination",
-          "body": "Scouting, permits, casting, payment, after-sales. ADMARA carries the logistics so the client can focus on the project."
+        "production": {
+          "title": "Production",
+          "body": "ADMARA covers the full photo and video spectrum. Creative, professional or personal projects — every production is framed to the client's intent, then entrusted to the talent whose eye serves the brief. One logic: the right profile, on the right project, in the right city."
         }
       }
     },

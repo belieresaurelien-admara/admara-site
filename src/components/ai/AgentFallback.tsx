@@ -21,7 +21,7 @@ export default function AgentFallback() {
           {t('cta_cal')}
         </a>
         <a
-          href="mailto:alyssia@admara-studio.com?subject=Projet%20ADMARA"
+          href="mailto:contact@admara-studio.com?subject=Projet%20ADMARA"
           className="font-sans text-caption uppercase tracking-[0.05em] border border-cream/60 text-cream px-xl py-md hover:bg-cream hover:text-ink transition-colors"
         >
           {t('cta_email')}

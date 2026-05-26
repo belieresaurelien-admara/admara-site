@@ -49,11 +49,14 @@ export default async function Footer() {
           <span className="font-sans text-caption uppercase tracking-[0.05em] text-ink/50 mb-xs">
             {t('contact')}
           </span>
+          <p className="font-serif text-body text-ink/90 leading-snug">
+            {t('collaborate')}
+          </p>
           <a
-            href="mailto:alyssia@admara-studio.com"
+            href="mailto:contact@admara-studio.com"
             className="font-sans text-body text-ink/80 hover:text-brick transition-colors w-fit"
           >
-            alyssia@admara-studio.com
+            contact@admara-studio.com
           </a>
           <a
             href="https://instagram.com/admara.studio"
