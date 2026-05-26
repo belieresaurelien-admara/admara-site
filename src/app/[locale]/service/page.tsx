@@ -29,7 +29,7 @@ export default async function ServicePage({params}: Props) {
     'coordination',
     'delivery'
   ] as const;
-  const pillars = ['selection', 'order', 'moodboard', 'coordination'] as const;
+  const pillars = ['qualite', 'temps', 'suivi', 'securite'] as const;
 
   return (
     <>

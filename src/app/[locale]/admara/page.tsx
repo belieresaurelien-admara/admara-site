@@ -21,7 +21,7 @@ export default async function AdmaraPage({params}: Props) {
   const t = await getTranslations('Admara');
 
   const founders = ['aurelien', 'alyssia'] as const;
-  const pillars = ['selection', 'order', 'moodboard', 'coordination'] as const;
+  const pillars = ['talent', 'ville', 'production'] as const;
 
   return (
     <>
@@ -73,6 +73,9 @@ export default async function AdmaraPage({params}: Props) {
             <p>{t('why.p1')}</p>
             <p>{t('why.p2')}</p>
             <p>{t('why.p3')}</p>
+            <p>{t('why.p4')}</p>
+            <p>{t('why.p5')}</p>
+            <p>{t('why.p6')}</p>
           </div>
         </div>
       </section>
@@ -123,7 +126,7 @@ export default async function AdmaraPage({params}: Props) {
               {t('method.intro')}
             </p>
           </div>
-          <ol className="grid gap-lg md:grid-cols-2 lg:grid-cols-4">
+          <ol className="grid gap-lg md:grid-cols-3">
             {pillars.map((key, i) => (
               <li
                 key={key}
