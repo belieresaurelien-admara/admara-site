@@ -16,7 +16,7 @@ import {
 } from '@/lib/ai/currency-map';
 
 const REDIRECT_DELAY_MS = 3500;
-const TOTAL_STEPS = 11;
+const TOTAL_STEPS = 12;
 const DATE_PATTERN = /\bdate|fenêtre|quand|période|when|dates\b/i;
 const BUDGET_PATTERN = /\bbudget|fourchette|envisages?-?tu|prestation totale|how much|spend\b/i;
 const PHONE_PATTERN = /\bt[éee]l[éee]phone|num[ée]ro\b|phone number|reach you|joindre\b/i;
@@ -25,7 +25,7 @@ const LOCATION_PATTERN = /\bvilles?|pays|location|country|where.*shoot|lieu\b/i;
 type UIMessage = {
   id: string;
   role: 'user' | 'assistant' | 'system';
-  parts?: Array<{type: string; text?: string}>;
+  parts?: Array<{type: string; text?: string; state?: string}>;
 };
 
 function getText(message: UIMessage): string {
@@ -34,6 +34,21 @@ function getText(message: UIMessage): string {
     .filter((p) => p.type === 'text')
     .map((p) => p.text || '')
     .join('');
+}
+
+function hasSubmitBriefResult(message: UIMessage): boolean {
+  if (!message.parts) return false;
+  return message.parts.some(
+    (p) => p.type === 'tool-submit_brief' && p.state === 'output-available'
+  );
+}
+
+// L'assistant répond "Ack. Question." — on teste les regex sur la dernière
+// phrase pour éviter qu'un acknowledgment ("Dates fixées.") déclenche l'UI
+// du tour précédent.
+function lastSentence(text: string): string {
+  const parts = text.split(/(?<=[.!?])\s+/).filter(Boolean);
+  return parts[parts.length - 1] || text;
 }
 
 /**
@@ -88,9 +103,12 @@ export default function AgentB() {
   const {messages, sendMessage, status, error} = useChat({
     transport,
     onFinish: ({message}) => {
-      const text = getText(message as UIMessage);
+      const m = message as UIMessage;
+      const text = getText(m);
       const briefSubmitted =
-        text.includes('Brief transmis') || text.includes('brief transmitted');
+        text.includes('Brief transmis') ||
+        text.includes('brief transmitted') ||
+        hasSubmitBriefResult(m);
       if (briefSubmitted) setSubmitted(true);
     }
   });
@@ -98,15 +116,31 @@ export default function AgentB() {
   const isLoading = status === 'streaming' || status === 'submitted';
 
   const calUrl =
-    process.env.NEXT_PUBLIC_CAL_URL || 'https://cal.com/admara/discovery-call';
+    process.env.NEXT_PUBLIC_CAL_URL ||
+    'https://cal.com/alyssia-mezaache-twazao/discovery-call-admara-studio';
+
+  const messagesList = messages as UIMessage[];
+  const assistantMessages = messagesList.filter((m) => m.role === 'assistant');
+  const userMessages = messagesList.filter((m) => m.role === 'user');
+  const currentAgent = assistantMessages[assistantMessages.length - 1];
+  const previousAgent = assistantMessages[assistantMessages.length - 2];
+  const previous = messagesList.filter((m) => m !== currentAgent);
+
+  // Détecte la tool-result submit_brief dans n'importe quel message — filet de
+  // sécurité si l'agent appelle le tool sans générer de texte de clôture.
+  const submittedFromTool = useMemo(
+    () => messagesList.some(hasSubmitBriefResult),
+    [messagesList]
+  );
+  const isSubmitted = submitted || submittedFromTool;
 
   useEffect(() => {
-    if (!submitted) return;
+    if (!isSubmitted) return;
     const timer = window.setTimeout(() => {
       window.open(calUrl, '_blank');
     }, REDIRECT_DELAY_MS);
     return () => window.clearTimeout(timer);
-  }, [submitted, calUrl]);
+  }, [isSubmitted, calUrl]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -116,22 +150,29 @@ export default function AgentB() {
     setInput('');
   };
 
-  if (error) {
-    return <AgentFallback />;
-  }
-
-  const messagesList = messages as UIMessage[];
-  const assistantMessages = messagesList.filter((m) => m.role === 'assistant');
-  const userMessages = messagesList.filter((m) => m.role === 'user');
-  const currentAgent = assistantMessages[assistantMessages.length - 1];
-  const previousAgent = assistantMessages[assistantMessages.length - 2];
-  const previous = messagesList.filter((m) => m !== currentAgent);
-
   useEffect(() => {
     setDatePicked(false);
     setBudgetPicked(false);
     setPhonePicked(false);
   }, [currentAgent?.id]);
+
+  // Filet de sécurité ultime : si l'utilisateur a atteint le 11ᵉ tour et que
+  // 6 secondes plus tard on n'a toujours pas de tool result ni de message
+  // contenant "Brief transmis", on bascule en mode submitted pour afficher le
+  // CTA Cal.com — au pire le brief ne sera pas envoyé par email, mais le user
+  // peut toujours réserver.
+  useEffect(() => {
+    if (isSubmitted) return;
+    if (userMessages.length < TOTAL_STEPS) return;
+    if (isLoading) return;
+    const timer = window.setTimeout(() => {
+      console.warn(
+        '[AgentB] timeout fallback: forcing submitted state after Q11'
+      );
+      setSubmitted(true);
+    }, 6000);
+    return () => window.clearTimeout(timer);
+  }, [isSubmitted, userMessages.length, isLoading]);
 
   // Détecter la réponse Q5 (pays) dans le dernier message user, juste après une
   // question agent qui parle de lieu.
@@ -150,30 +191,33 @@ export default function AgentB() {
   const initialPrompt = t('initial_prompt');
 
   const rawStep = Math.min(assistantMessages.length, TOTAL_STEPS - 1);
-  const progress = submitted ? 100 : (rawStep / TOTAL_STEPS) * 100;
+  const progress = isSubmitted ? 100 : (rawStep / TOTAL_STEPS) * 100;
 
   const currentAgentText = currentAgent ? getText(currentAgent) : '';
+  const currentQuestion = lastSentence(currentAgentText);
 
   const showDatePicker =
-    !submitted &&
+    !isSubmitted &&
     !isInitial &&
     !datePicked &&
     !isLoading &&
-    DATE_PATTERN.test(currentAgentText);
+    DATE_PATTERN.test(currentQuestion);
 
+  // Note: on retire !budgetPicked car le budget fallback peut le remettre à true
+  // sur la même question si la réponse user contient un chiffre. Le !isLoading
+  // gère déjà l'état transitoire pendant le stream agent.
   const showBudgetDropdown =
-    !submitted &&
+    !isSubmitted &&
     !isInitial &&
-    !budgetPicked &&
     !isLoading &&
-    BUDGET_PATTERN.test(currentAgentText);
+    BUDGET_PATTERN.test(currentQuestion);
 
   const showPhoneInput =
-    !submitted &&
+    !isSubmitted &&
     !isInitial &&
     !phonePicked &&
     !isLoading &&
-    PHONE_PATTERN.test(currentAgentText);
+    PHONE_PATTERN.test(currentQuestion);
 
   const handleDateSubmit = (text: string) => {
     setDatePicked(true);
@@ -223,7 +267,7 @@ export default function AgentB() {
     }
   }, [previousAgent, userMessages, budgetPicked]);
 
-  const displayMessage = submitted
+  const displayMessage = isSubmitted
     ? t('confirmation')
     : isInitial
       ? initialPrompt
@@ -232,19 +276,23 @@ export default function AgentB() {
   const detectedCurrency: Currency = captureRef.current.currency ?? 'USD';
   const detectedCountry = captureRef.current.country;
 
+  if (error) {
+    return <AgentFallback />;
+  }
+
   return (
     <div className="w-full max-w-[36rem] mx-auto flex flex-col gap-lg">
-      {(rawStep > 0 || submitted) && (
+      {(rawStep > 0 || isSubmitted) && (
         <div className="w-full h-[2px] bg-cream/15 rounded-full overflow-hidden">
           <div
             className="h-full bg-cream"
             style={{
               width: `${progress}%`,
-              boxShadow: submitted
+              boxShadow: isSubmitted
                 ? '0 0 12px rgba(142, 58, 25, 0.5)'
                 : '0 0 8px rgba(244, 239, 230, 0.3)',
-              backgroundColor: submitted ? 'var(--color-brick)' : undefined,
-              transition: submitted
+              backgroundColor: isSubmitted ? 'var(--color-brick)' : undefined,
+              transition: isSubmitted
                 ? 'width 1000ms ease, background-color 400ms ease, box-shadow 400ms ease'
                 : 'width 700ms ease-out'
             }}
@@ -252,7 +300,7 @@ export default function AgentB() {
         </div>
       )}
 
-      {previous.length > 0 && !submitted && (
+      {previous.length > 0 && !isSubmitted && (
         <details className="text-cream/60 text-xs">
           <summary className="cursor-pointer uppercase tracking-[0.05em] font-sans hover:text-cream">
             {t('history', {count: previous.length})}
@@ -271,13 +319,13 @@ export default function AgentB() {
       )}
 
       <p
-        key={submitted ? 'confirm' : currentAgent?.id || 'initial'}
+        key={isSubmitted ? 'confirm' : currentAgent?.id || 'initial'}
         className="font-sans text-h3 text-cream text-center leading-snug min-h-[5rem] animate-[fadeIn_300ms_ease-out]"
       >
         {displayMessage}
       </p>
 
-      {submitted ? (
+      {isSubmitted ? (
         <a
           href={calUrl}
           target="_blank"

@@ -25,13 +25,12 @@ export default async function AdmaraPage({params}: Props) {
 
   return (
     <>
-      {/* ⚠️ Fichier attendu : public/images/header-admara2.jpg */}
       <div className="relative w-full h-[280px] md:h-[520px] overflow-hidden bg-ink">
         <Image
-          src="/images/header-admara2.jpg"
+          src="/images/header-admara3.jpg"
           alt="ADMARA Studio"
           fill
-          className="object-contain object-center"
+          className="object-cover object-center"
           priority
         />
         <div className="absolute inset-0 bg-ink/25 pointer-events-none" />

@@ -1,9 +1,24 @@
 import {anthropic} from '@ai-sdk/anthropic';
-import {streamText, tool, convertToModelMessages} from 'ai';
+import {streamText, tool, convertToModelMessages, stepCountIs} from 'ai';
 import {briefSchema, buildSystemPrompt} from '@/lib/ai/agent-b-config';
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
+
+const TOTAL_USER_TURNS = 12;
+
+type IncomingMessage = {
+  role: string;
+  parts?: Array<{type?: string; state?: string}>;
+};
+
+function hasSubmittedBrief(messages: IncomingMessage[]): boolean {
+  return messages.some((m) =>
+    m.parts?.some(
+      (p) => p.type === 'tool-submit_brief' && p.state === 'output-available'
+    )
+  );
+}
 
 export async function POST(req: Request) {
   const {messages} = await req.json();
@@ -11,19 +26,44 @@ export async function POST(req: Request) {
 
   // Filter out any system messages from the client — system prompt is passed
   // separately via the `system` param and must not be duplicated in messages.
-  const safeMessages = (messages as Array<{role: string}>).filter(
-    (m) => m.role !== 'system'
-  );
+  const incoming = messages as IncomingMessage[];
+  const safeMessages = incoming.filter((m) => m.role !== 'system');
   const modelMessages = await convertToModelMessages(
     safeMessages as Parameters<typeof convertToModelMessages>[0]
   );
+
+  // Filet de sécurité : si le user a déjà répondu à 11 tours et que le tool
+  // n'a pas encore été appelé, on force le modèle à appeler submit_brief
+  // pour clôturer le flow. Évite que Haiku boucle indéfiniment.
+  const userTurns = safeMessages.filter((m) => m.role === 'user').length;
+  const forceSubmit =
+    userTurns >= TOTAL_USER_TURNS && !hasSubmittedBrief(safeMessages);
+
+  console.log('[agent-b] POST', {
+    userTurns,
+    forceSubmit,
+    totalMessages: safeMessages.length
+  });
 
   const result = streamText({
     model: anthropic('claude-haiku-4-5-20251001'),
     system: buildSystemPrompt(),
     messages: modelMessages,
     temperature: 0.4,
-    maxOutputTokens: 120,
+    maxOutputTokens: forceSubmit ? 800 : 120,
+    stopWhen: stepCountIs(2),
+    toolChoice: forceSubmit ? {type: 'tool', toolName: 'submit_brief'} : 'auto',
+    onError({error}) {
+      console.error('[agent-b] streamText error', error);
+    },
+    onStepFinish({finishReason, toolCalls, toolResults, text}) {
+      console.log('[agent-b] step finish', {
+        finishReason,
+        toolCallNames: toolCalls?.map((c) => c.toolName),
+        toolResultCount: toolResults?.length ?? 0,
+        textLen: text?.length ?? 0
+      });
+    },
     tools: {
       submit_brief: tool({
         description:

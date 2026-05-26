@@ -5,7 +5,8 @@ import {useTranslations} from 'next-intl';
 export default function AgentFallback() {
   const t = useTranslations('Service.fallback');
   const calUrl =
-    process.env.NEXT_PUBLIC_CAL_URL || 'https://cal.com/admara/discovery-call';
+    process.env.NEXT_PUBLIC_CAL_URL ||
+    'https://cal.com/alyssia-mezaache-twazao/discovery-call-admara-studio';
 
   return (
     <div className="flex flex-col items-center text-center gap-md max-w-[36rem]">
