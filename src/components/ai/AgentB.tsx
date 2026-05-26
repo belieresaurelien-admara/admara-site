@@ -3,7 +3,7 @@
 import {useChat} from '@ai-sdk/react';
 import {DefaultChatTransport} from 'ai';
 import {useState, useMemo, useEffect, useRef} from 'react';
-import {useTranslations} from 'next-intl';
+import {useTranslations, useLocale} from 'next-intl';
 import AgentFallback from './AgentFallback';
 import DateRangePicker from './DateRangePicker';
 import BudgetDropdown from './BudgetDropdown';
@@ -17,10 +17,10 @@ import {
 
 const REDIRECT_DELAY_MS = 3500;
 const TOTAL_STEPS = 12;
-const DATE_PATTERN = /\bdate|fenêtre|quand|période|when|dates\b/i;
-const BUDGET_PATTERN = /\bbudget|fourchette|envisages?-?tu|prestation totale|how much|spend\b/i;
-const PHONE_PATTERN = /\bt[éee]l[éee]phone|num[ée]ro\b|phone number|reach you|joindre\b/i;
-const LOCATION_PATTERN = /\bvilles?|pays|location|country|where.*shoot|lieu\b/i;
+const DATE_PATTERN = /\bdate|fenêtre|quand|période|when|dates|timeframe|window|schedule\b/i;
+const BUDGET_PATTERN = /\bbudget|fourchette|envisages?-?tu|prestation totale|how much|spend|brackets?|price range\b/i;
+const PHONE_PATTERN = /\bt[éee]l[éee]phone|num[ée]ro\b|phone( number)?|reach you|joindre|contact number\b/i;
+const LOCATION_PATTERN = /\bvilles?|pays|location|country|where.*shoot|lieu|city\b/i;
 
 type UIMessage = {
   id: string;
@@ -81,6 +81,7 @@ function freeAmountToBracket(text: string): Bracket | null {
 
 export default function AgentB() {
   const t = useTranslations('Service.agent');
+  const locale = useLocale();
   const [input, setInput] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [datePicked, setDatePicked] = useState(false);
@@ -96,18 +97,19 @@ export default function AgentB() {
   }>({});
 
   const transport = useMemo(
-    () => new DefaultChatTransport({api: '/api/agent-b'}),
-    []
+    () => new DefaultChatTransport({api: '/api/agent-b', body: {locale}}),
+    [locale]
   );
 
   const {messages, sendMessage, status, error} = useChat({
     transport,
     onFinish: ({message}) => {
       const m = message as UIMessage;
-      const text = getText(m);
+      const lowered = getText(m).toLowerCase();
       const briefSubmitted =
-        text.includes('Brief transmis') ||
-        text.includes('brief transmitted') ||
+        lowered.includes('brief transmis') ||
+        lowered.includes('brief transmitted') ||
+        lowered.includes('brief delivered') ||
         hasSubmitBriefResult(m);
       if (briefSubmitted) setSubmitted(true);
     }

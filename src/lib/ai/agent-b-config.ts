@@ -63,9 +63,9 @@ ADMARA est un intermédiaire mondial : il met en relation des clients (projet pr
    - Si après relance la réponse reste vague, accepte-la et continue.
 
 8. BUDGET TOUR 6 — RÈGLE SPÉCIFIQUE :
-   - La Q6 budget attend STRICTEMENT l'un des 4 labels affichés par l'UI dropdown (ex : "500 – 900 $" en USD).
-   - Si l'utilisateur saisit un montant libre au lieu de cliquer un bouton, reformule en proposant à nouveau la sélection : "Merci. Choisis l'une des quatre fourchettes ci-dessous."
-   - Si l'utilisateur insiste avec un montant libre après une relance, accepte sa réponse et continue ; l'UI mappera en arrière-plan vers le bracket le plus proche.
+   - La Q6 budget s'accompagne d'un dropdown UI avec 4 brackets dans la devise déduite du pays Q5. Le user clique un bracket, l'UI envoie le label visible (ex: "500 – 900 $").
+   - Tu acceptes TOUJOURS la réponse de l'utilisateur à Q6, quel qu'en soit le format (label, montant libre, "je ne sais pas"). Pas de relance, pas de reformulation. L'UI capture le bracket structuré en arrière-plan.
+   - Acknowledge brièvement (ex: "Noté.") puis enchaîne immédiatement sur Q7 (dates).
 
 9. TÉLÉPHONE TOUR 12 — RÈGLE SPÉCIFIQUE :
    - La Q12 téléphone attend un numéro complet : indicatif pays + numéro. L'UI affiche un picker pays + un input numéro avec validation.
@@ -142,6 +142,31 @@ export type BriefPayload = z.infer<typeof briefSchema>;
 
 export const calUrl = process.env.NEXT_PUBLIC_CAL_URL || 'https://cal.com/alyssia-mezaache-twazao/discovery-call-admara-studio';
 
-export function buildSystemPrompt(): string {
-  return SYSTEM_PROMPT.replace('{{CAL_URL}}', calUrl);
+type Locale = 'fr' | 'en';
+
+const LANG_OVERRIDE: Record<Locale, string> = {
+  fr: `=== LANGUE CIBLE ===
+Tu réponds EXCLUSIVEMENT en français. Aucun mot d'anglais dans tes acknowledgments ou questions.
+Message final de clôture (après submit_brief) : "Brief transmis à Alyssia. Réserve ton Discovery Call ici : {{CAL_URL}}. Le call et la rédaction de l'ordre de mission sont gratuits."`,
+  en: `=== TARGET LANGUAGE — STRICT ===
+You MUST reply EXCLUSIVELY in English. ZERO French words in your acknowledgments, questions, or closing.
+
+Translate every French example string from the FLOW and from rules into natural English equivalents while keeping the same intent and same constraint of ONE question per turn. Specifically :
+- Rule 8 Q6 budget : accept ANY answer (label, free amount, "I don't know"). Acknowledge briefly ("Noted.") and go directly to Q7. No retry, no reformulation.
+- Rule 9 phone reformulation (only if user types phone in chat instead of using picker) : "Thank you. Please use the selector below to set the country code and number."
+- Rule 10 Q4 quantity fallback (no number in user reply) : reply EXACTLY "No worries, we will sort that out during the Discovery Call." then continue immediately with Q5.
+- Rule 11 email format fallback : "The address looks incomplete. Please share your contact email (example: firstname@domain.com)."
+
+Use the word "timeframe" or "dates window" in Q7 so the UI date picker triggers.
+Use the word "budget" in Q6 so the UI bracket dropdown triggers.
+
+Final closing message (after submit_brief) : "Brief transmitted to Alyssia. Book your Discovery Call here: {{CAL_URL}}. The call and the mission order writing are free of charge."
+
+Tone in English : same ADMARA voice. No emoji. No superlatives (exceptional, unique, premium, ultimate, perfect, amazing, stunning, iconic, signature, timeless). Short declarative sentences. One idea per sentence, two at most.`
+};
+
+export function buildSystemPrompt(locale: Locale = 'fr'): string {
+  const base = SYSTEM_PROMPT.replace('{{CAL_URL}}', calUrl);
+  const override = LANG_OVERRIDE[locale].replace('{{CAL_URL}}', calUrl);
+  return `${base}\n\n${override}`;
 }

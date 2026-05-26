@@ -21,8 +21,9 @@ function hasSubmittedBrief(messages: IncomingMessage[]): boolean {
 }
 
 export async function POST(req: Request) {
-  const {messages} = await req.json();
+  const {messages, locale} = await req.json();
   const origin = new URL(req.url).origin;
+  const lang: 'fr' | 'en' = locale === 'en' ? 'en' : 'fr';
 
   // Filter out any system messages from the client — system prompt is passed
   // separately via the `system` param and must not be duplicated in messages.
@@ -40,6 +41,7 @@ export async function POST(req: Request) {
     userTurns >= TOTAL_USER_TURNS && !hasSubmittedBrief(safeMessages);
 
   console.log('[agent-b] POST', {
+    lang,
     userTurns,
     forceSubmit,
     totalMessages: safeMessages.length
@@ -47,7 +49,7 @@ export async function POST(req: Request) {
 
   const result = streamText({
     model: anthropic('claude-haiku-4-5-20251001'),
-    system: buildSystemPrompt(),
+    system: buildSystemPrompt(lang),
     messages: modelMessages,
     temperature: 0.4,
     maxOutputTokens: forceSubmit ? 800 : 120,
