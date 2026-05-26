@@ -38,7 +38,7 @@ export default async function HomePage({params}: Props) {
 
       <Link
         href="/service"
-        className="absolute bottom-[10rem] md:bottom-[8rem] left-1/2 -translate-x-1/2 z-10 border border-white/80 text-cream/90 px-xl py-md font-sans text-caption uppercase tracking-[0.2em] bg-transparent hover:bg-white hover:text-ink transition-colors duration-[250ms]"
+        className="absolute bottom-[5rem] md:bottom-[8rem] left-1/2 -translate-x-1/2 z-10 border border-white/80 text-cream/90 px-xl py-md font-sans text-caption uppercase tracking-[0.2em] bg-transparent hover:bg-white hover:text-ink transition-colors duration-[250ms]"
       >
         {t('cta_city')}
       </Link>
