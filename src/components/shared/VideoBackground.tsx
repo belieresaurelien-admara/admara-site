@@ -1,6 +1,6 @@
 'use client';
 
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 type Props = {
   /** Path or URL to the desktop video (≥ md breakpoint). */
@@ -16,12 +16,17 @@ type Props = {
 
 const STORAGE_KEY = 'videoTime';
 const THROTTLE_MS = 2000;
+const MD_BREAKPOINT = 768; // matches Tailwind md:
 
 /**
  * Full-bleed video background with responsive desktop/phone variants.
- * - Persists currentTime across in-tab navigations via sessionStorage (throttled to 2s).
- * - Both videos render; CSS visibility-toggles the right one.
- * - Muted + autoplay + playsInline required for iOS Safari autoplay.
+ * - Renders ONE <video> element at a time based on viewport — avoids two
+ *   videos competing for autoplay (iOS Safari was failing silently).
+ * - Forces preload="auto" so iOS has enough buffer to start playback.
+ * - Programmatically calls .play() once mounted to bypass edge cases where
+ *   autoplay attribute alone fails (low-power signals, certain webviews).
+ *   Caught promise rejections stay silent — user can tap to start manually.
+ * - Persists currentTime across in-tab navigations via sessionStorage.
  */
 export default function VideoBackground({
   desktopSrc,
@@ -30,85 +35,85 @@ export default function VideoBackground({
   overlayOpacity = 30,
   className = ''
 }: Props) {
-  const videoDesktopRef = useRef<HTMLVideoElement | null>(null);
-  const videoPhoneRef = useRef<HTMLVideoElement | null>(null);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
   const lastSaveRef = useRef<number>(0);
+  const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    const mql = window.matchMedia(`(min-width: ${MD_BREAKPOINT}px)`);
+    const update = () => setIsDesktop(mql.matches);
+    update();
+    mql.addEventListener('change', update);
+    return () => mql.removeEventListener('change', update);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const video = videoRef.current;
+    if (!video) return;
 
     const stored = window.sessionStorage.getItem(STORAGE_KEY);
     const startAt = stored ? parseFloat(stored) : NaN;
 
-    const apply = (video: HTMLVideoElement | null) => {
-      if (!video) return;
+    const resumeAndPlay = () => {
       if (Number.isFinite(startAt) && startAt > 0) {
-        const setTime = () => {
-          try {
-            video.currentTime = startAt;
-          } catch {
-            /* swallow — invalid time, video metadata not ready */
-          }
-        };
-        if (video.readyState >= 1) setTime();
-        else video.addEventListener('loadedmetadata', setTime, {once: true});
+        try {
+          video.currentTime = startAt;
+        } catch {
+          /* metadata not ready — silent */
+        }
       }
+      video.play().catch(() => {
+        /* autoplay blocked (low power mode, etc.) — user can tap to start */
+      });
     };
 
-    apply(videoDesktopRef.current);
-    apply(videoPhoneRef.current);
+    if (video.readyState >= 2) resumeAndPlay();
+    else video.addEventListener('loadeddata', resumeAndPlay, {once: true});
 
-    const onTimeUpdate = (event: Event) => {
-      const target = event.target as HTMLVideoElement;
+    const onTimeUpdate = () => {
       const now = Date.now();
       if (now - lastSaveRef.current < THROTTLE_MS) return;
       lastSaveRef.current = now;
       try {
-        window.sessionStorage.setItem(STORAGE_KEY, target.currentTime.toString());
+        window.sessionStorage.setItem(STORAGE_KEY, video.currentTime.toString());
       } catch {
-        /* sessionStorage may be unavailable (private mode) — silent fail */
+        /* sessionStorage unavailable */
       }
     };
 
-    const desktop = videoDesktopRef.current;
-    const phone = videoPhoneRef.current;
-    desktop?.addEventListener('timeupdate', onTimeUpdate);
-    phone?.addEventListener('timeupdate', onTimeUpdate);
-
+    video.addEventListener('timeupdate', onTimeUpdate);
     return () => {
-      desktop?.removeEventListener('timeupdate', onTimeUpdate);
-      phone?.removeEventListener('timeupdate', onTimeUpdate);
+      video.removeEventListener('timeupdate', onTimeUpdate);
+      video.removeEventListener('loadeddata', resumeAndPlay);
     };
-  }, []);
+  }, [isDesktop]);
+
+  // Avoid SSR/CSR mismatch: render nothing until the matchMedia has resolved.
+  if (isDesktop === null) {
+    return (
+      <div className={`absolute inset-0 -z-10 overflow-hidden bg-ink ${className}`} />
+    );
+  }
+
+  const src = isDesktop ? desktopSrc : phoneSrc;
 
   return (
     <div className={`absolute inset-0 -z-10 overflow-hidden ${className}`}>
       <video
-        ref={videoDesktopRef}
-        className="hidden md:block w-full h-full object-cover"
+        key={src}
+        ref={videoRef}
+        className="w-full h-full object-cover"
         autoPlay
         loop
         muted
         playsInline
         poster={poster}
-        preload="metadata"
+        preload="auto"
         aria-hidden="true"
       >
-        <source src={desktopSrc} type="video/mp4" />
-      </video>
-
-      <video
-        ref={videoPhoneRef}
-        className="block md:hidden w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-        poster={poster}
-        preload="metadata"
-        aria-hidden="true"
-      >
-        <source src={phoneSrc} type="video/mp4" />
+        <source src={src} type="video/mp4" />
       </video>
 
       <div
