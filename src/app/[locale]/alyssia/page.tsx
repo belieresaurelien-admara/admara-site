@@ -19,7 +19,8 @@ export default async function AlyssiaCardPage({params}: Props) {
 
   const t = await getTranslations('Alyssia');
 
-  const lineUrl = 'https://line.me/R/ti/p/%40admara-alyssia';
+  const whatsappUrl = 'https://wa.me/66954758972';
+  const lineUrl = 'https://line.me/ti/p/_5B9jtA2-k';
   const emailUrl = `mailto:${t('cta_email_value')}`;
 
   return (
@@ -55,6 +56,20 @@ export default async function AlyssiaCardPage({params}: Props) {
         </a>
 
         <div className="w-full max-w-[20rem] flex flex-col gap-sm mt-sm">
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-baseline justify-between border-b border-ink/15 py-md hover:border-brick transition-colors group"
+          >
+            <span className="font-sans text-caption uppercase tracking-[0.1em] text-ink/50 group-hover:text-brick transition-colors">
+              {t('cta_whatsapp_label')}
+            </span>
+            <span className="font-sans text-body text-ink group-hover:text-brick transition-colors">
+              {t('cta_whatsapp_value')}
+            </span>
+          </a>
+
           <a
             href={lineUrl}
             target="_blank"
